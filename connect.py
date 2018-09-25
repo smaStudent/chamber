@@ -51,7 +51,7 @@ if ser.isOpen():
 
     for i in range(10):
         ans = sendAndReceive(ser, tempAsk+finishString)
-        print(str(i)+'.1' + ' ans for \'TEMP?\'' + '  Lenght: ' + str(len(ans)))
+        print(str(i) + ' ans for \'TEMP?\'' + '  Lenght: ' + str(len(ans)))
         print(ans)
 
     time.sleep(1)
@@ -101,7 +101,7 @@ if ser.isOpen():
 
     for i in range(10):
         ans = sendAndReadTemp(ser)
-        print(str(i)+ + ' ans for \'TEMP?\'' + '  Lenght: ' + str(len(ans)))
+        print(str(i) + ' ans for \'TEMP?\'' + '  Lenght: ' + str(len(ans)))
         print(ans)
 
 
