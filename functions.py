@@ -1,4 +1,4 @@
-
+import time
 
 def sendAndReceive(serialObject, message):
     serialObject.write(bytearray(message, 'utf-8'))

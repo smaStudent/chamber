@@ -59,8 +59,3 @@ if (not ser.isOpen):
     print('port zamknieto z sukcesem')
 else:
     print('nie udalo sie zamknac portu')
-
-
-
-
-
