@@ -42,14 +42,14 @@ print(ser.isOpen())
 print(ser.name)
 
 if ser.isOpen():
-    ser.write(bytearray(firstString, 'utf-8'))  # + finishString) # here we are starting with new connection
+    ser.write(bytearray(firstString[0:len(firstString)], 'utf-8'))  # + finishString) # here we are starting with new connection
     time.sleep(0.2)
     ans = ser.readline()
     print('Ans for \'SRQ?\'')
     print(str(ans) + 'Length: ' + str(len(ans)))
 
 for i in range(10):
-    ser.write(bytearray((tempAsk + finishString, 'utf-8'))) # Ask for TEMP
+    ser.write(bytearray(((tempAsk + finishString)[0:(len(tempAsk + finishString))], 'utf-8'))) # Ask for TEMP
     time.sleep(0.2)
     ans = ser.read(8)
     print(str(i) + '. ans for \'TEMP?\'' + '  Lenght: ' + str(len(x)))
