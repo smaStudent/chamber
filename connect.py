@@ -42,17 +42,13 @@ print(ser.isOpen())
 print(ser.name)
 
 if ser.isOpen():
-    ser.write(bytearray(firstString[0:len(firstString)], 'utf-8'))  # + finishString) # here we are starting with new connection
-    time.sleep(0.2)
-    ans = ser.readline()
+    ans = sendAndReceive(ser, finishString+finishString)
     print('Ans for \'SRQ?\'')
     print(str(ans) + 'Length: ' + str(len(ans)))
 
 for i in range(10):
-    ser.write(bytearray(((tempAsk + finishString)[0:(len(tempAsk + finishString))], 'utf-8'))) # Ask for TEMP
-    time.sleep(0.2)
-    ans = ser.read(8)
-    print(str(i) + '. ans for \'TEMP?\'' + '  Lenght: ' + str(len(x)))
+    ans = sendAndReceive(ser, tempAsk+finishString)
+    print(str(i) + '. ans for \'TEMP?\'' + '  Lenght: ' + str(len(ans)))
     print(ans)
 
     time.sleep(1)
@@ -62,3 +58,12 @@ if (not ser.isOpen):
     print('port zamknieto z sukcesem')
 else:
     print('nie udalo sie zamknac portu')
+
+
+
+def sendAndReceive(serialObject, message):
+    serialObject.write(bytearray(message, 'utf-8'))
+    time.sleep(0.2)
+    ans = serialObject.read(8)
+    return ans
+
