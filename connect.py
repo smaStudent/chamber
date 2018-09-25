@@ -46,7 +46,7 @@ if ser.isOpen():
     time.sleep(0.2)
     ans = ser.readline()
     print('Ans for \'SRQ?\'')
-    print(str(ans) + 'Length: ' +str(len(x))
+    print(str(ans) + 'Length: ' +str(len(x)))
 
 for i in range(10):
     ser.write(tempAsk + finishString) #Ask for TEMP
@@ -56,8 +56,6 @@ for i in range(10):
     print(ans)
 
     time.sleep(1)
-
-
 ser.close()
 
 if(not ser.isOpen):
