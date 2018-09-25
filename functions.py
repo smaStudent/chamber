@@ -8,14 +8,14 @@ def sendAndReceive(serialObject, message):
     return ans
 
 def sendAndReadFirst(serialObject):
-    serialObject.write(b'SRQ?')
+    serialObject.write(b'SRQ?\r\n')
     time.sleep(0.2)
     ans = serialObject.readline()
     return ans
 
 
 def sendAndReadTemp(serialObject):
-    serialObject.write(b'TEMP?')
+    serialObject.write(b'TEMP?\r\n')
     time.sleep(0.2)
-    ans = serialObject.read(8)
+    ans = serialObject.readline()
     return ans
