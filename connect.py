@@ -65,50 +65,69 @@ else:
 
 
 
-##################################################
-##### second try, to find out which is better#####
-##################################################
-print(" ")
-print("Podejscie 2")
-print(" ")
 
 
-ser = serial.Serial()
-ser.port = '/dev/ttyUSB0'
-ser.baudrate = 9600
-ser.polarity = None
-ser.bytesize = serial.EIGHTBITS
-ser.stopbits = serial.STOPBITS_ONE
-ser.timeout = 1
-ser.write_timeout = 2
-ser.parity = serial.PARITY_NONE
-ser.dsrdtr = True
 
 
-firstString = 'SRQ?'
-tempAsk = 'TEMP?'
-humiAsk = 'HUMI?'
-finishString = '\r\n'  # \r
-ser.open()
-print("Udalo sie otworzyc: ", ser.isOpen())
-print(ser.name)
-
-if ser.isOpen():
-    ans = sendAndReadFirst(ser)
-    print('Ans for \'SRQ?\', from the second function')
-    print(str(ans) + 'Length: ' + str(len(ans)))
 
 
-    for i in range(10):
-        ans = sendAndReadTemp(ser)
-        print(str(i) + ' ans for \'TEMP?\'' + '  Lenght: ' + str(len(ans)))
-        print(ans)
 
 
-    time.sleep(1)
-ser.close()
 
-if not ser.isOpen():
-    print('port zamknieto z sukcesem')
-else:
-    print('nie udalo sie zamknac portu')
+
+
+
+
+
+
+
+
+
+#
+# ##################################################
+# ##### second try, to find out which is better#####
+# ##################################################
+# print(" ")
+# print("Podejscie 2")
+# print(" ")
+#
+#
+# ser = serial.Serial()
+# ser.port = '/dev/ttyUSB0'
+# ser.baudrate = 9600
+# ser.polarity = None
+# ser.bytesize = serial.EIGHTBITS
+# ser.stopbits = serial.STOPBITS_ONE
+# ser.timeout = 1
+# ser.write_timeout = 2
+# ser.parity = serial.PARITY_NONE
+# ser.dsrdtr = True
+#
+#
+# firstString = 'SRQ?'
+# tempAsk = 'TEMP?'
+# humiAsk = 'HUMI?'
+# finishString = '\r\n'  # \r
+# ser.open()
+# print("Udalo sie otworzyc: ", ser.isOpen())
+# print(ser.name)
+#
+# if ser.isOpen():
+#     ans = sendAndReadFirst(ser)
+#     print('Ans for \'SRQ?\', from the second function')
+#     print(str(ans) + 'Length: ' + str(len(ans)))
+#
+#
+#     for i in range(10):
+#         ans = sendAndReadTemp(ser)
+#         print(str(i) + ' ans for \'TEMP?\'' + '  Lenght: ' + str(len(ans)))
+#         print(ans)
+#
+#
+#     time.sleep(1)
+# ser.close()
+#
+# if not ser.isOpen():
+#     print('port zamknieto z sukcesem')
+# else:
+#     print('nie udalo sie zamknac portu')
