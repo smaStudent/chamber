@@ -1,7 +1,8 @@
 import serial
 import time
 from functions import sendAndReceive
-
+from functions import sendAndReadFirst
+from functions import sendAndReadTemp
 # import io
 ser = serial.Serial()
 #ser.port = "COM3"
@@ -39,7 +40,7 @@ tempAsk = 'TEMP?'
 humiAsk = 'HUMI?'
 finishString = '\r\n'  # \r
 ser.open()
-print(ser.isOpen())
+print("Udalo sie otworzyc: ", ser.isOpen())
 print(ser.name)
 
 if ser.isOpen():
@@ -47,10 +48,23 @@ if ser.isOpen():
     print('Ans for \'SRQ?\'')
     print(str(ans) + 'Length: ' + str(len(ans)))
 
-for i in range(10):
-    ans = sendAndReceive(ser, tempAsk+finishString)
-    print(str(i) + '. ans for \'TEMP?\'' + '  Lenght: ' + str(len(ans)))
-    print(ans)
+    ans = sendAndReadFirst(ser)
+    print('Ans for \'SRQ?\', from the second function')
+    print(str(ans) + 'Length: ' + str(len(ans)))
+
+
+    for i in range(10):
+        ans = sendAndReceive(ser, tempAsk+finishString)
+        print(str(i)+'.1' + ' ans for \'TEMP?\'' + '  Lenght: ' + str(len(ans)))
+        print(ans)
+
+
+        # check if that wont be better than function in which we pass the message
+        ans = sendAndReadTemp(ser)
+        print(str(i)+'.2' + ' ans for \'TEMP?\'' + '  Lenght: ' + str(len(ans)))
+        print(ans)
+
+
 
     time.sleep(1)
 ser.close()
