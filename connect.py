@@ -4,8 +4,8 @@ from functions import sendAndReceive
 
 # import io
 ser = serial.Serial()
-ser.port = "COM3"
-# ser.port = '/dev/ttyS4'
+#ser.port = "COM3"
+ser.port = '/dev/ttyUSB0'
 ser.baudrate = 9600
 ser.polarity = None
 ser.bytesize = serial.EIGHTBITS
@@ -55,7 +55,7 @@ for i in range(10):
     time.sleep(1)
 ser.close()
 
-if (not ser.isOpen):
+if not ser.isOpen():
     print('port zamknieto z sukcesem')
 else:
     print('nie udalo sie zamknac portu')
