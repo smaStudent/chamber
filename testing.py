@@ -1,28 +1,9 @@
-
-tempTable = {'NAME': "jen", 'TIME': 76, 'PV': 67, 'SP': 8, 'MIN': 8, 'MAX': 5}
-
-print(str(tempTable))
-
-simpleStr = '2, 56.2, 38.9'
-tempStr = str()
-for s in simpleStr:
-    if s == ',':
-        print(tempStr)
-        tempStr = str()
-    else:
-        tempStr = tempStr + s
-
 import datetime
+import time
 
-print(datetime.datetime.now())
+while 1:
+    period = datetime.datetime.now()
 
-print(datetime.datetime.now())
-
-date = datetime.datetime.now()
-
-year = date.year
-month = date.second
-
-print("\n")
-print(year)
-print(month)
+    if period.second %5 ==0:
+        print('5 sekund za nami')
+        time.sleep(1)

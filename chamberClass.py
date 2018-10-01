@@ -1,11 +1,12 @@
 import serial
 import time
-#from errors import ErrorDict        # to bedzie potrzebne do obslugi bledow
+# from errors import ErrorDict        # to bedzie potrzebne do obslugi bledow
 import datetime
+from functions import saveTableToFile
+from functions import sendAndReceive
 
 
 class Chamber:
-
     def __init__(self, port='/dev/ttyUSB0', baudrate=9600):
         self.timeInIteration = None
         self.iteration = 0
@@ -29,7 +30,7 @@ class Chamber:
         self.humiAsk = 'HUMI?\r\n'
         self.heaterAsk = '%?\r\n'
         self.condInside = 'MON?\r\n'
-        #self.lastString = '\r\n'    # it has to be in every single message
+        # self.lastString = '\r\n'    # it has to be in every single message
 
         # self.tempTable = {'NAME': 'TEMP',
         #                   'TIME': None,
@@ -51,8 +52,6 @@ class Chamber:
         #                   'HEATER_OUTPUT': None,
         #                   'HUMIDIFYING_HEAT_OUT': None}
 
-
-
         # check if we have open connection
 
         self.tempTab = []
@@ -64,30 +63,39 @@ class Chamber:
             print("ERROR, can not connect with chamber!")
 
     def update(self):
-        self.timeInIteration = datetime.datetime.now()
-        self.getNewVal()
+        period = datetime.datetime.now()
+        if period.second % 20 == 0:     # if 20 seconds passed, we do what is inside the if statement
+            self.timeInIteration = datetime.datetime.now()
+            self.getNewVal()
 
-        if self.iteration == 50:
+            if self.iteration == 50:
+                # here we've to put function for moving data from tables to files
+                tempFile = open('tempData.txt', 'a')
+                humiFile = open('humiData.txt', 'a')
 
-        self.iteration = self.iteration + 1
+                saveTableToFile(tempFile, self.tempTab)
+                saveTableToFile(humiFile, self.humiTab)
+                print("Dane przeniesione do pliku ")
+                self.iteration = 0
+                self.tempTab = 0
+                self.humiTab = 0
 
-
+            self.iteration = self.iteration + 1
+            time.sleep(1)               # we wait 1 sec to avoid taking 2nd time the same values 
 
     ####################################
     ######### helpful function #########
     ####################################
 
-    def sendAndReceive(self, serialObject, message):
-        serialObject.write(bytearray(message, 'utf-8'))
-        time.sleep(0.2)
-        ans = serialObject.readline()
-        return ans
-
     def dealWithTemp(self):
         global highLim, lowLim, tempSV, tempPV
+        highLim = str()
+        lowLim = str()
+        tempSV = str()
+        tempPV = str()
         tempStr = str()
         whichIter = 0
-        ansTemp = self.sendAndReceive(self.ser, self.tempAsk)
+        ansTemp = sendAndReceive(self.ser, self.tempAsk)
         # here check if we didn't get an error
 
         for c in ansTemp:
@@ -108,22 +116,26 @@ class Chamber:
             if whichIter == 3:
                 lowLim = tempInt
 
-        self.tempTab[self.iteration,0] = self.timeInIteration.year
-        self.tempTab[self.iteration,1] = self.timeInIteration.month
-        self.tempTab[self.iteration,2] = self.timeInIteration.day
-        self.tempTab[self.iteration,3] = self.timeInIteration.hour
-        self.tempTab[self.iteration,4] = self.timeInIteration.minute
-        self.tempTab[self.iteration,5] = self.timeInIteration.second
-        self.tempTab[self.iteration,6] = tempPV
-        self.tempTab[self.iteration,7] = tempSV
-        self.tempTab[self.iteration,8] = highLim
-        self.tempTab[self.iteration,9] = lowLim
+        self.tempTab[self.iteration, 0] = self.timeInIteration.year
+        self.tempTab[self.iteration, 1] = self.timeInIteration.month
+        self.tempTab[self.iteration, 2] = self.timeInIteration.day
+        self.tempTab[self.iteration, 3] = self.timeInIteration.hour
+        self.tempTab[self.iteration, 4] = self.timeInIteration.minute
+        self.tempTab[self.iteration, 5] = self.timeInIteration.second
+        self.tempTab[self.iteration, 6] = tempPV
+        self.tempTab[self.iteration, 7] = tempSV
+        self.tempTab[self.iteration, 8] = highLim
+        self.tempTab[self.iteration, 9] = lowLim
 
     def dealWithHumi(self):
         global highLim, lowLim, humiSV, humiPV
+        highLim = str()
+        lowLim = str()
+        humiPV = str()
+        humiSV = str()
         tempStr = str()
         whichIter = 0
-        ansHumi = self.sendAndReceive(self.ser, self.humiAsk)
+        ansHumi = sendAndReceive(self.ser, self.humiAsk)
         # here check if we didn't get an error
 
         for c in ansHumi:
@@ -144,32 +156,26 @@ class Chamber:
             if whichIter == 3:
                 lowLim = tempInt
 
-        self.humiTab[self.iteration,0] = self.timeInIteration.year
-        self.humiTab[self.iteration,1] = self.timeInIteration.month
-        self.humiTab[self.iteration,2] = self.timeInIteration.day
-        self.humiTab[self.iteration,3] = self.timeInIteration.hour
-        self.humiTab[self.iteration,4] = self.timeInIteration.minute
-        self.humiTab[self.iteration,5] = self.timeInIteration.second
-        self.humiTab[self.iteration,6] = humiPV
-        self.humiTab[self.iteration,7] = humiSV
-        self.humiTab[self.iteration,8] = highLim
-        self.humiTab[self.iteration,9] = lowLim
-
+        self.humiTab[self.iteration, 0] = self.timeInIteration.year
+        self.humiTab[self.iteration, 1] = self.timeInIteration.month
+        self.humiTab[self.iteration, 2] = self.timeInIteration.day
+        self.humiTab[self.iteration, 3] = self.timeInIteration.hour
+        self.humiTab[self.iteration, 4] = self.timeInIteration.minute
+        self.humiTab[self.iteration, 5] = self.timeInIteration.second
+        self.humiTab[self.iteration, 6] = humiPV
+        self.humiTab[self.iteration, 7] = humiSV
+        self.humiTab[self.iteration, 8] = highLim
+        self.humiTab[self.iteration, 9] = lowLim
 
     def getNewVal(self):
         self.dealWithTemp()
         self.dealWithHumi()
 
-    def saveTableToFile(self, obj, dictionary):
-        for key,val in dictionary:
-            obj.write(val+'\n')
-        obj.close()
-
-    # def checkIfNotError(self, ans):
-    #     #tutaj cos trzeba dac
+################### OLD CODE ###############################
 
 
-
+# def checkIfNotError(self, ans):
+#     #tutaj cos trzeba dac
 
 # def sendAndReceive(serialObject, message):
 #     serialObject.write(bytearray(message, 'utf-8'))

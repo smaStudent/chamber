@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73ace7fb-d7df-4b59-81d1-e7d4a180d7f6" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chamberClass.py" beforeDir="false" afterPath="$PROJECT_DIR$/chamberClass.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/testing.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,76 +27,51 @@
         <counts>
           <entry key="commandsAndErrors" value="1" />
           <entry key="md" value="1" />
-          <entry key="py" value="6" />
-          <entry key="txt" value="3" />
+          <entry key="py" value="8" />
+          <entry key="txt" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Markdown" value="1" />
-          <entry key="PLAIN_TEXT" value="4" />
-          <entry key="Python" value="6" />
+          <entry key="PLAIN_TEXT" value="7" />
+          <entry key="Python" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="4873" />
+          <entry key="py" value="6260" />
           <entry key="txt" value="382" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="382" />
-          <entry key="Python" value="4873" />
+          <entry key="Python" value="6260" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/chamberClass.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-117">
-              <caret line="27" column="34" lean-forward="true" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
+            <state relative-caret-position="374">
+              <caret line="65" column="40" lean-forward="true" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
                 <element signature="e#901#968#0" />
-                <element signature="e#2240#2368#0" />
-                <element signature="e#2556#3825#0" />
-                <element signature="e#3871#5141#0" />
-                <marker date="1537970576594" expanded="true" signature="136:141" ph="..." />
-                <marker date="1537970576594" expanded="true" signature="1991:1992" ph="..." />
-                <marker date="1537970576594" expanded="true" signature="2014:2019" ph="..." />
-                <marker date="1537970576594" expanded="true" signature="2175:2181" ph="..." />
-                <marker date="1537970576594" expanded="true" signature="2491:2496" ph="..." />
-                <marker date="1537970576594" expanded="true" signature="2519:2528" ph="..." />
-                <marker date="1537970576594" expanded="true" signature="2519:3803" ph="..." />
-                <marker date="1537970576594" expanded="true" signature="3826:5106" ph="..." />
-                <marker date="1537970576594" expanded="true" signature="5236:5329" ph="..." />
-                <marker date="1537970576594" expanded="true" signature="5362:5373" ph="..." />
+                <element signature="e#2215#2621#0" />
+                <element signature="e#2710#4082#0" />
+                <element signature="e#4120#5492#0" />
+                <element signature="e#5551#5611#0" />
+                <marker date="1538399721920" expanded="true" signature="211:216" ph="..." />
+                <marker date="1538399721920" expanded="true" signature="2065:2066" ph="..." />
+                <marker date="1538399721920" expanded="true" signature="2231:2236" ph="..." />
+                <marker date="1538399721920" expanded="true" signature="5879:5942" ph="..." />
+                <marker date="1538399721920" expanded="true" signature="5975:5982" ph="..." />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/connect.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="39" column="17" lean-forward="true" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/commandsAndErrors.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="44" selection-start-line="44" selection-end-line="44" />
             </state>
           </provider>
         </entry>
@@ -102,27 +79,28 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-              <folding>
-                <marker date="1537960422076" expanded="true" signature="246:247" ph="..." />
-              </folding>
+            <state relative-caret-position="255">
+              <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+            <state relative-caret-position="119">
+              <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.txt">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/dane.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -151,12 +129,13 @@
       <list>
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/connect.py" />
-        <option value="$PROJECT_DIR$/functions.py" />
         <option value="$PROJECT_DIR$/commandsAndErrors.txt" />
         <option value="$PROJECT_DIR$/errors.py" />
         <option value="$PROJECT_DIR$/test.txt" />
-        <option value="$PROJECT_DIR$/testing.py" />
+        <option value="$PROJECT_DIR$/dane.txt" />
+        <option value="$PROJECT_DIR$/functions.py" />
         <option value="$PROJECT_DIR$/chamberClass.py" />
+        <option value="$PROJECT_DIR$/testing.py" />
       </list>
     </option>
   </component>
@@ -164,6 +143,23 @@
     <option name="x" value="-7" />
     <option name="width" value="974" />
     <option name="height" value="1047" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyTypeCheckerInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -299,6 +295,9 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/commandsAndErrors.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -316,47 +315,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test.txt">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/dane.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+        <state relative-caret-position="255">
+          <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chamberClass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="65" column="40" lean-forward="true" selection-start-line="65" selection-start-column="40" selection-end-line="65" selection-end-column="40" />
           <folding>
-            <marker date="1537960422076" expanded="true" signature="246:247" ph="..." />
+            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#901#968#0" />
+            <element signature="e#2215#2621#0" />
+            <element signature="e#2710#4082#0" />
+            <element signature="e#4120#5492#0" />
+            <element signature="e#5551#5611#0" />
+            <marker date="1538399721920" expanded="true" signature="211:216" ph="..." />
+            <marker date="1538399721920" expanded="true" signature="2065:2066" ph="..." />
+            <marker date="1538399721920" expanded="true" signature="2231:2236" ph="..." />
+            <marker date="1538399721920" expanded="true" signature="5879:5942" ph="..." />
+            <marker date="1538399721920" expanded="true" signature="5975:5982" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/testing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/chamberClass.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-117">
-          <caret line="27" column="34" lean-forward="true" selection-start-line="27" selection-start-column="34" selection-end-line="27" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#901#968#0" />
-            <element signature="e#2240#2368#0" />
-            <element signature="e#2556#3825#0" />
-            <element signature="e#3871#5141#0" />
-            <marker date="1537970576594" expanded="true" signature="136:141" ph="..." />
-            <marker date="1537970576594" expanded="true" signature="1991:1992" ph="..." />
-            <marker date="1537970576594" expanded="true" signature="2014:2019" ph="..." />
-            <marker date="1537970576594" expanded="true" signature="2175:2181" ph="..." />
-            <marker date="1537970576594" expanded="true" signature="2491:2496" ph="..." />
-            <marker date="1537970576594" expanded="true" signature="2519:2528" ph="..." />
-            <marker date="1537970576594" expanded="true" signature="2519:3803" ph="..." />
-            <marker date="1537970576594" expanded="true" signature="3826:5106" ph="..." />
-            <marker date="1537970576594" expanded="true" signature="5236:5329" ph="..." />
-            <marker date="1537970576594" expanded="true" signature="5362:5373" ph="..." />
-          </folding>
+        <state relative-caret-position="119">
+          <caret line="7" column="8" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
         </state>
       </provider>
     </entry>
