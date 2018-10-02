@@ -83,6 +83,7 @@ class Chamber:
         tempStr = str()
         whichIter = 0
         ansTemp = sendAndReceive(self.ser, self.tempAsk)
+        print("Odpowiedz z sendAndReceive: ", ansTemp)
         # here check if we didn't get an error
 
         for c in ansTemp:
@@ -132,6 +133,7 @@ class Chamber:
         whichIter = 0
         ansHumi = sendAndReceive(self.ser, self.humiAsk)
         # here check if we didn't get an error
+        print("Odpowiedz z sendAndReceive: ", ansHumi)
 
         for c in ansHumi:
             if c == ',':
