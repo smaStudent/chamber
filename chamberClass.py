@@ -56,7 +56,7 @@ class Chamber:
 
         # check if we have open connection
 
-        self.tempTab = newTable()
+        self.tempTab = []
         self.humiTab = []
 
         self.ser.open()
