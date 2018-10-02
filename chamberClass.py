@@ -82,7 +82,7 @@ class Chamber:
         tempPV = str()
         tempStr = str()
         whichIter = 0
-        ansTemp = sendAndReceive(self.ser, self.tempAsk)
+        ansTemp = sendAndReceive(self.ser, self.tempAsk).encode('utf-8')
         print("Odpowiedz z sendAndReceive: ", ansTemp)
         # here check if we didn't get an error
 
@@ -131,7 +131,7 @@ class Chamber:
         humiSV = str()
         tempStr = str()
         whichIter = 0
-        ansHumi = sendAndReceive(self.ser, self.humiAsk)
+        ansHumi = sendAndReceive(self.ser, self.humiAsk).encode('utf-8')
         print(sendAndReceive(self.ser, self.humiAsk))
         # here check if we didn't get an error
         print("Odpowiedz z sendAndReceive: ", ansHumi)

@@ -4,7 +4,7 @@ import datetime
 def sendAndReceive(serialObject, message):
     serialObject.write(bytearray(message, 'utf-8'))
     time.sleep(0.2)
-    ans = serialObject.readline().encode('utf-8')
+    ans = serialObject.readline()
     return str(ans)
 
 def saveTableToFile(obj, table):
@@ -12,8 +12,6 @@ def saveTableToFile(obj, table):
             obj.write(str(i))
             obj.write('\n')
         obj.close()
-
-def
 
 
 ############### OLD ONE ##################
