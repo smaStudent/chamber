@@ -1,9 +1,6 @@
-import datetime
-import time
+from chamberClass import Chamber
 
-while 1:
-    period = datetime.datetime.now()
+chamber1 = Chamber()
 
-    if period.second %5 ==0:
-        print('5 sekund za nami')
-        time.sleep(1)
+for i in range(100):
+    chamber1.update()

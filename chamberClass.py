@@ -64,7 +64,7 @@ class Chamber:
 
     def update(self):
         period = datetime.datetime.now()
-        if period.second % 20 == 0:     # if 20 seconds passed, we do what is inside the if statement
+        if period.second % 20 == 0:  # if 20 seconds passed, we do what is inside the if statement
             self.timeInIteration = datetime.datetime.now()
             self.getNewVal()
 
@@ -81,7 +81,7 @@ class Chamber:
                 self.humiTab = 0
 
             self.iteration = self.iteration + 1
-            time.sleep(1)               # we wait 1 sec to avoid taking 2nd time the same values 
+            time.sleep(1)  # we wait 1 sec to avoid taking 2nd time the same values
 
     ####################################
     ######### helpful function #########
