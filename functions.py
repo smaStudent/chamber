@@ -1,11 +1,12 @@
 import time
+import serial
 import datetime
 
 def sendAndReceive(serialObject, message):
     serialObject.write(bytearray(message, 'utf-8'))
     time.sleep(0.2)
     ans = serialObject.readline()
-    return str(ans)
+    return ans
 
 def saveTableToFile(obj, table):
         for i in table:
