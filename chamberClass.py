@@ -57,6 +57,8 @@ class Chamber:
         self.tempTab = []
         self.humiTab = []
 
+        self.ser.open()
+
         if self.ser.isOpen():
             print("Connected successfully")
         else:
@@ -64,11 +66,11 @@ class Chamber:
 
     def update(self):
         period = datetime.datetime.now()
-        if period.second % 20 == 0:  # if 20 seconds passed, we do what is inside the if statement
+        if period.second % 1 == 0:  # if 20 seconds passed, we do what is inside the if statement
             self.timeInIteration = datetime.datetime.now()
             self.getNewVal()
 
-            if self.iteration == 50:
+            if self.iteration == 1:
                 # here we've to put function for moving data from tables to files
                 tempFile = open('tempData.txt', 'a')
                 humiFile = open('humiData.txt', 'a')
@@ -82,6 +84,7 @@ class Chamber:
 
             self.iteration = self.iteration + 1
             time.sleep(1)  # we wait 1 sec to avoid taking 2nd time the same values
+            print("po sleep, nowa iteracja")
 
     ####################################
     ######### helpful function #########
@@ -126,6 +129,7 @@ class Chamber:
         self.tempTab[self.iteration, 7] = tempSV
         self.tempTab[self.iteration, 8] = highLim
         self.tempTab[self.iteration, 9] = lowLim
+        print("temperetura, sciagnieta")
 
     def dealWithHumi(self):
         global highLim, lowLim, humiSV, humiPV
@@ -166,11 +170,12 @@ class Chamber:
         self.humiTab[self.iteration, 7] = humiSV
         self.humiTab[self.iteration, 8] = highLim
         self.humiTab[self.iteration, 9] = lowLim
+        print("wilgotnosc sciagnieta")
 
     def getNewVal(self):
         self.dealWithTemp()
         self.dealWithHumi()
-
+        print("getNewVal, dziala chyba")
 ################### OLD CODE ###############################
 
 
