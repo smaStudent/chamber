@@ -106,7 +106,7 @@ class Chamber:
                 whichIter = whichIter + 1
                 tempStr = str()
             else:
-                tempStr = tempStr + c
+                tempStr = tempStr + str(c)
 
             tempInt = int(tempStr)
 
@@ -147,7 +147,7 @@ class Chamber:
                 whichIter = whichIter + 1
                 tempStr = str()
             else:
-                tempStr = tempStr + c
+                tempStr = tempStr + str(c)
 
             tempInt = int(tempStr)
 
