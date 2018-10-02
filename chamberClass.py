@@ -94,7 +94,7 @@ class Chamber:
             else:
                 tempStr = tempStr + str(c)
 
-            tempInt = int(tempStr)
+            tempInt = float(tempStr)
 
             if whichIter == 0:
                 tempPV = tempInt
@@ -144,7 +144,7 @@ class Chamber:
             else:
                 tempStr = tempStr + str(c)
 
-            tempInt = int(tempStr)
+            tempInt = float(tempStr)
 
             if whichIter == 0:
                 humiPV = tempInt
