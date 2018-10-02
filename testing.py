@@ -1,9 +1,7 @@
-from chamberClass import Chamber
-import time
+import numpy as np
+#import MySQLdb
 
-chamber1 = Chamber()
+array = np.zeros([50,50])
 
-for i in range(100):
-    chamber1.update()
-    chamber1.showTemp()
-    time.sleep(2)
+print(type(array))
+print(str(array.shape()))

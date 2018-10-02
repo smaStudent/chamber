@@ -7,7 +7,6 @@ from functions import sendAndReceive
 import numpy as np
 
 
-
 class Chamber:
     def __init__(self, port='/dev/ttyUSB0', baudrate=9600):
         self.timeInIteration = None
@@ -34,12 +33,10 @@ class Chamber:
         self.condInside = 'MON?\r\n'
         # self.lastString = '\r\n'    # it has to be in every single message
 
-
-
         # check if we have open connection
 
-        self.tempTab = np.array()
-        self.humiTab = np.array()
+        #self.tempTab = np.array(50, 50, np.int32)
+        #self.humiTab = np.array()
 
         self.ser.open()
 
@@ -52,15 +49,15 @@ class Chamber:
         period = datetime.datetime.now()
         if period.second % 1 == 0:  # if 20 seconds passed, we do what is inside the if statement
             self.timeInIteration = datetime.datetime.now()
-            self.getNewVal()
+            #self.getNewVal()
 
             if self.iteration == 1:
                 # here we've to put function for moving data from tables to files
                 tempFile = open('tempData.txt', 'a')
                 humiFile = open('humiData.txt', 'a')
 
-                saveTableToFile(tempFile, self.tempTab)
-                saveTableToFile(humiFile, self.humiTab)
+                saveTableToFile(tempFile, self.dealWithTemp())
+                saveTableToFile(humiFile, self.dealWithHumi())
                 print("Dane przeniesione do pliku ")
                 self.iteration = 0
                 self.tempTab = 0
@@ -75,7 +72,7 @@ class Chamber:
     ####################################
 
     def showTemp(self):
-        print(sendAndReceive(self.ser,self.tempAsk))
+        print(sendAndReceive(self.ser, self.tempAsk))
 
     def dealWithTemp(self):
         global highLim, lowLim, tempSV, tempPV
@@ -106,17 +103,23 @@ class Chamber:
             if whichIter == 3:
                 lowLim = tempInt
 
-        self.tempTab[self.iteration, 0] = str(self.timeInIteration.year)
-        self.tempTab[self.iteration, 1] = str(self.timeInIteration.month)
-        self.tempTab[self.iteration, 2] = str(self.timeInIteration.day)
-        self.tempTab[self.iteration, 3] = str(self.timeInIteration.hour)
-        self.tempTab[self.iteration, 4] = str(self.timeInIteration.minute)
-        self.tempTab[self.iteration, 5] = str(self.timeInIteration.second)
-        self.tempTab[self.iteration, 6] = str(tempPV)
-        self.tempTab[self.iteration, 7] = str(tempSV)
-        self.tempTab[self.iteration, 8] = str(highLim)
-        self.tempTab[self.iteration, 9] = str(lowLim)
+
         print("temperetura, sciagnieta")
+        return [str(self.timeInIteration.year), str(self.timeInIteration.month), str(self.timeInIteration.day),
+                str(self.timeInIteration.hour), str(self.timeInIteration.minute), str(self.timeInIteration.second),
+                str(tempPV), str(tempSV), str(highLim), str(lowLim)]
+
+        # self.tempTab[self.iteration, 0] = str(self.timeInIteration.year)
+        # self.tempTab[self.iteration, 1] = str(self.timeInIteration.month)
+        # self.tempTab[self.iteration, 2] = str(self.timeInIteration.day)
+        # self.tempTab[self.iteration, 3] = str(self.timeInIteration.hour)
+        # self.tempTab[self.iteration, 4] = str(self.timeInIteration.minute)
+        # self.tempTab[self.iteration, 5] = str(self.timeInIteration.second)
+        # self.tempTab[self.iteration, 6] = str(tempPV)
+        # self.tempTab[self.iteration, 7] = str(tempSV)
+        # self.tempTab[self.iteration, 8] = str(highLim)
+        # self.tempTab[self.iteration, 9] = str(lowLim)
+        # print("temperetura, sciagnieta")
 
     def dealWithHumi(self):
         global highLim, lowLim, humiSV, humiPV
@@ -147,17 +150,22 @@ class Chamber:
             if whichIter == 3:
                 lowLim = tempInt
 
-        self.humiTab[self.iteration, 0] = str(self.timeInIteration.year)
-        self.humiTab[self.iteration, 1] = str(self.timeInIteration.month)
-        self.humiTab[self.iteration, 2] = str(self.timeInIteration.day)
-        self.humiTab[self.iteration, 3] = str(self.timeInIteration.hour)
-        self.humiTab[self.iteration, 4] = str(self.timeInIteration.minute)
-        self.humiTab[self.iteration, 5] = str(self.timeInIteration.second)
-        self.humiTab[self.iteration, 6] = str(humiPV)
-        self.humiTab[self.iteration, 7] = str(humiSV)
-        self.humiTab[self.iteration, 8] = str(highLim)
-        self.humiTab[self.iteration, 9] = str(lowLim)
         print("wilgotnosc sciagnieta")
+        return [str(self.timeInIteration.year), str(self.timeInIteration.month), str(self.timeInIteration.day),
+                str(self.timeInIteration.hour), str(self.timeInIteration.minute), str(self.timeInIteration.second),
+                str(humiPV), str(humiSV), str(highLim), str(lowLim)]
+        #
+        # self.humiTab[self.iteration, 0] = str(self.timeInIteration.year)
+        # self.humiTab[self.iteration, 1] = str(self.timeInIteration.month)
+        # self.humiTab[self.iteration, 2] = str(self.timeInIteration.day)
+        # self.humiTab[self.iteration, 3] = str(self.timeInIteration.hour)
+        # self.humiTab[self.iteration, 4] = str(self.timeInIteration.minute)
+        # self.humiTab[self.iteration, 5] = str(self.timeInIteration.second)
+        # self.humiTab[self.iteration, 6] = str(humiPV)
+        # self.humiTab[self.iteration, 7] = str(humiSV)
+        # self.humiTab[self.iteration, 8] = str(highLim)
+        # self.humiTab[self.iteration, 9] = str(lowLim)
+        # print("wilgotnosc sciagnieta")
 
     def getNewVal(self):
         self.dealWithTemp()
@@ -215,24 +223,22 @@ class Chamber:
 #         self.heaterTable = {'NAME': 'HEATER_OUTPUT', 'TIME': self.timeInIteration, 'NUMBER_OF_HEATERS': tempNum, 'HEATER_OUTPUT': heaterOutput, 'HUMIDIFYING_HEAT_OUT': humiHeterOut}
 
 
-
-
-  # self.tempTable = {'NAME': 'TEMP',
-        #                   'TIME': None,
-        #                   'PV': None,
-        #                   'SP': None,
-        #                   'MIN': None,
-        #                   'MAX': None}
-        #
-        # self.humiTable = {'NAME': 'HUMI',
-        #                   'TIME': None,
-        #                   'PV': None,
-        #                   'SV': None,
-        #                   'MIN': None,
-        #                   'MAX': None}
-        #
-        # self.heaterTable ={'NAME': 'HEATER_OUTPUT',
-        #                   'TIME': None,
-        #                   'NUMBER_OF_HEATERS': None,
-        #                   'HEATER_OUTPUT': None,
-        #                   'HUMIDIFYING_HEAT_OUT': None}
+# self.tempTable = {'NAME': 'TEMP',
+#                   'TIME': None,
+#                   'PV': None,
+#                   'SP': None,
+#                   'MIN': None,
+#                   'MAX': None}
+#
+# self.humiTable = {'NAME': 'HUMI',
+#                   'TIME': None,
+#                   'PV': None,
+#                   'SV': None,
+#                   'MIN': None,
+#                   'MAX': None}
+#
+# self.heaterTable ={'NAME': 'HEATER_OUTPUT',
+#                   'TIME': None,
+#                   'NUMBER_OF_HEATERS': None,
+#                   'HEATER_OUTPUT': None,
+#                   'HUMIDIFYING_HEAT_OUT': None}
