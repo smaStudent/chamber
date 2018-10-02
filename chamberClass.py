@@ -105,6 +105,7 @@ class Chamber:
 
 
         print("temperetura, sciagnieta")
+        print("temperatura to: ", tempPV)
         return [str(self.timeInIteration.year), str(self.timeInIteration.month), str(self.timeInIteration.day),
                 str(self.timeInIteration.hour), str(self.timeInIteration.minute), str(self.timeInIteration.second),
                 str(tempPV), str(tempSV), str(highLim), str(lowLim)]
@@ -151,6 +152,7 @@ class Chamber:
                 lowLim = tempInt
 
         print("wilgotnosc sciagnieta")
+        print("wilgotnosc to: ", humiPV)
         return [str(self.timeInIteration.year), str(self.timeInIteration.month), str(self.timeInIteration.day),
                 str(self.timeInIteration.hour), str(self.timeInIteration.minute), str(self.timeInIteration.second),
                 str(humiPV), str(humiSV), str(highLim), str(lowLim)]
