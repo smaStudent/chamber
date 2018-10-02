@@ -4,6 +4,8 @@ import time
 import datetime
 from functions import saveTableToFile
 from functions import sendAndReceive
+import numpy as np
+
 
 
 class Chamber:
@@ -54,7 +56,7 @@ class Chamber:
 
         # check if we have open connection
 
-        self.tempTab = []
+        self.tempTab = newTable()
         self.humiTab = []
 
         self.ser.open()
@@ -90,6 +92,9 @@ class Chamber:
     ######### helpful function #########
     ####################################
 
+    def showTemp(self):
+        print(sendAndReceive(self.ser,self.tempAsk))
+
     def dealWithTemp(self):
         global highLim, lowLim, tempSV, tempPV
         highLim = str()
@@ -119,16 +124,16 @@ class Chamber:
             if whichIter == 3:
                 lowLim = tempInt
 
-        self.tempTab[self.iteration, 0] = self.timeInIteration.year
-        self.tempTab[self.iteration, 1] = self.timeInIteration.month
-        self.tempTab[self.iteration, 2] = self.timeInIteration.day
-        self.tempTab[self.iteration, 3] = self.timeInIteration.hour
-        self.tempTab[self.iteration, 4] = self.timeInIteration.minute
-        self.tempTab[self.iteration, 5] = self.timeInIteration.second
-        self.tempTab[self.iteration, 6] = tempPV
-        self.tempTab[self.iteration, 7] = tempSV
-        self.tempTab[self.iteration, 8] = highLim
-        self.tempTab[self.iteration, 9] = lowLim
+        self.tempTab[self.iteration, 0] = str(self.timeInIteration.year)
+        self.tempTab[self.iteration, 1] = str(self.timeInIteration.month)
+        self.tempTab[self.iteration, 2] = str(self.timeInIteration.day)
+        self.tempTab[self.iteration, 3] = str(self.timeInIteration.hour)
+        self.tempTab[self.iteration, 4] = str(self.timeInIteration.minute)
+        self.tempTab[self.iteration, 5] = str(self.timeInIteration.second)
+        self.tempTab[self.iteration, 6] = str(tempPV)
+        self.tempTab[self.iteration, 7] = str(tempSV)
+        self.tempTab[self.iteration, 8] = str(highLim)
+        self.tempTab[self.iteration, 9] = str(lowLim)
         print("temperetura, sciagnieta")
 
     def dealWithHumi(self):
@@ -160,16 +165,16 @@ class Chamber:
             if whichIter == 3:
                 lowLim = tempInt
 
-        self.humiTab[self.iteration, 0] = self.timeInIteration.year
-        self.humiTab[self.iteration, 1] = self.timeInIteration.month
-        self.humiTab[self.iteration, 2] = self.timeInIteration.day
-        self.humiTab[self.iteration, 3] = self.timeInIteration.hour
-        self.humiTab[self.iteration, 4] = self.timeInIteration.minute
-        self.humiTab[self.iteration, 5] = self.timeInIteration.second
-        self.humiTab[self.iteration, 6] = humiPV
-        self.humiTab[self.iteration, 7] = humiSV
-        self.humiTab[self.iteration, 8] = highLim
-        self.humiTab[self.iteration, 9] = lowLim
+        self.humiTab[self.iteration, 0] = str(self.timeInIteration.year)
+        self.humiTab[self.iteration, 1] = str(self.timeInIteration.month)
+        self.humiTab[self.iteration, 2] = str(self.timeInIteration.day)
+        self.humiTab[self.iteration, 3] = str(self.timeInIteration.hour)
+        self.humiTab[self.iteration, 4] = str(self.timeInIteration.minute)
+        self.humiTab[self.iteration, 5] = str(self.timeInIteration.second)
+        self.humiTab[self.iteration, 6] = str(humiPV)
+        self.humiTab[self.iteration, 7] = str(humiSV)
+        self.humiTab[self.iteration, 8] = str(highLim)
+        self.humiTab[self.iteration, 9] = str(lowLim)
         print("wilgotnosc sciagnieta")
 
     def getNewVal(self):
