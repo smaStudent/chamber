@@ -35,8 +35,8 @@ class Chamber:
 
         # check if we have open connection
 
-        #self.tempTab = np.array(50, 50, np.int32)
-        #self.humiTab = np.array()
+        # self.tempTab = np.array(50, 50, np.int32)
+        # self.humiTab = np.array()
 
         self.ser.open()
 
@@ -49,7 +49,7 @@ class Chamber:
         period = datetime.datetime.now()
         if period.second % 1 == 0:  # if 20 seconds passed, we do what is inside the if statement
             self.timeInIteration = datetime.datetime.now()
-            #self.getNewVal()
+            # self.getNewVal()
 
             if self.iteration == 1:
                 # here we've to put function for moving data from tables to files
@@ -89,6 +89,7 @@ class Chamber:
         for c in ansTemp:
             if c == ',':
                 whichIter = whichIter + 1
+                tempStr = None
                 tempStr = str()
             else:
                 tempStr = tempStr + str(c)
@@ -103,7 +104,6 @@ class Chamber:
                 highLim = tempInt
             if whichIter == 3:
                 lowLim = tempInt
-
 
         print("temperetura, sciagnieta")
         print("temperatura to: ", tempPV)
@@ -138,6 +138,7 @@ class Chamber:
         for c in ansHumi:
             if c == ',':
                 whichIter = whichIter + 1
+                tempStr = None
                 tempStr = str()
             else:
                 tempStr = tempStr + str(c)
