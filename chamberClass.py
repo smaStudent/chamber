@@ -34,30 +34,12 @@ class Chamber:
         self.condInside = 'MON?\r\n'
         # self.lastString = '\r\n'    # it has to be in every single message
 
-        # self.tempTable = {'NAME': 'TEMP',
-        #                   'TIME': None,
-        #                   'PV': None,
-        #                   'SP': None,
-        #                   'MIN': None,
-        #                   'MAX': None}
-        #
-        # self.humiTable = {'NAME': 'HUMI',
-        #                   'TIME': None,
-        #                   'PV': None,
-        #                   'SV': None,
-        #                   'MIN': None,
-        #                   'MAX': None}
-        #
-        # self.heaterTable ={'NAME': 'HEATER_OUTPUT',
-        #                   'TIME': None,
-        #                   'NUMBER_OF_HEATERS': None,
-        #                   'HEATER_OUTPUT': None,
-        #                   'HUMIDIFYING_HEAT_OUT': None}
+
 
         # check if we have open connection
 
-        self.tempTab = []
-        self.humiTab = []
+        self.tempTab = np.array()
+        self.humiTab = np.array()
 
         self.ser.open()
 
@@ -231,3 +213,26 @@ class Chamber:
 #                 humiHeterOut = tempInt
 #
 #         self.heaterTable = {'NAME': 'HEATER_OUTPUT', 'TIME': self.timeInIteration, 'NUMBER_OF_HEATERS': tempNum, 'HEATER_OUTPUT': heaterOutput, 'HUMIDIFYING_HEAT_OUT': humiHeterOut}
+
+
+
+
+  # self.tempTable = {'NAME': 'TEMP',
+        #                   'TIME': None,
+        #                   'PV': None,
+        #                   'SP': None,
+        #                   'MIN': None,
+        #                   'MAX': None}
+        #
+        # self.humiTable = {'NAME': 'HUMI',
+        #                   'TIME': None,
+        #                   'PV': None,
+        #                   'SV': None,
+        #                   'MIN': None,
+        #                   'MAX': None}
+        #
+        # self.heaterTable ={'NAME': 'HEATER_OUTPUT',
+        #                   'TIME': None,
+        #                   'NUMBER_OF_HEATERS': None,
+        #                   'HEATER_OUTPUT': None,
+        #                   'HUMIDIFYING_HEAT_OUT': None}
