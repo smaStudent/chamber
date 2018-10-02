@@ -132,6 +132,7 @@ class Chamber:
         tempStr = str()
         whichIter = 0
         ansHumi = sendAndReceive(self.ser, self.humiAsk)
+        print(sendAndReceive(self.ser, self.humiAsk))
         # here check if we didn't get an error
         print("Odpowiedz z sendAndReceive: ", ansHumi)
 
