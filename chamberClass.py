@@ -48,7 +48,6 @@ class Chamber:
         period = datetime.datetime.now()
         if period.second % 1 == 0:  # if 1 seconds passed, we do what is inside the if statement
             self.timeInIteration = datetime.datetime.now()
-        self.showDate()
 
 
     ####################################
@@ -68,6 +67,7 @@ class Chamber:
 
     def tempData(self):
         PV, SP, lowVal, maxVal = changeAnsForTable(sendAndReceive(self.ser, self.tempAsk))
+        print(self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal)
         return self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal
 
     def humiData(self):
