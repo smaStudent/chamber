@@ -31,7 +31,11 @@ def retFloatFromString(givStr):
             newLastStr = newLastStr + c
         elif c == '.':
             wasThereComma = True
-    retFloat = float(int(newFirstStr)) + (float(int(newLastStr)) / pow(10, (len(newLastStr))))
+
+    if wasThereComma:
+        retFloat = float(int(newFirstStr)) + (float(int(newLastStr)) / pow(10, (len(newLastStr))))
+    else:
+        retFloat = float(int(newFirstStr))
     return retFloat
 
 
@@ -49,7 +53,7 @@ def changeAnsForTable(ans):
             tempStr = tempStr + c
         elif c == ',':
             if iteration == 0:
-                print("To sie wywala? ",tempStr)
+                print("To sie wywala? ", tempStr)
                 PV = retFloatFromString(tempStr)
                 tempStr = str()
             elif iteration == 1:
