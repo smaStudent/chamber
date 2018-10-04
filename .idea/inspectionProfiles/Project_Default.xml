@@ -14,6 +14,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="serial.*" />
+          <option value="numpy.core.multiarray.ndarray.append" />
         </list>
       </option>
     </inspection_tool>

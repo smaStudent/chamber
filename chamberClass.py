@@ -73,6 +73,7 @@ class Chamber:
 
     def showTemp(self):
         print(sendAndReceive(self.ser, self.tempAsk))
+        return sendAndReceive(self.ser, self.tempAsk)
 
     # def dealWithTemp(self):
     #     global highLim, lowLim, tempSV, tempPV
