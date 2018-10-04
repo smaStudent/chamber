@@ -62,7 +62,7 @@ def changeAnsForTable(ans):
                 tempStr = str()
             iteration = iteration + 1
 
-    return PV, SP, max, low
+    return PV, SP, low, max
 
 ############### OLD ONE ##################
 #

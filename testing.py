@@ -5,19 +5,7 @@ from chamberClass import Chamber
 from functions import *
 
 chamber1 = Chamber()
-arrayNp = np.array(chamber1.showTemp())
 
 for i in range(10):
     time.sleep(1)
-    print("odp bezposrednia", chamber1.showTemp())
-    print("odpowiedz po zmianie na float", changeAnsForTable(chamber1.showTemp()))
-
-
-
-
-
-
-
-
-
-
+    chamber1.showHumi()
