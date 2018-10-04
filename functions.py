@@ -52,7 +52,8 @@ def changeAnsForTable(ans):
                 PV = retFloatFromString(tempStr)
                 tempStr = str()
             elif iteration == 1:
-                SP = retFloatFromString(tempStr)
+                if tempStr != "OFF":
+                    SP = retFloatFromString(tempStr)
                 tempStr = str()
             elif iteration == 2:
                 max = retFloatFromString(tempStr)
