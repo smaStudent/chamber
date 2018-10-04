@@ -54,6 +54,9 @@ class Chamber:
     ######### helpful function #########
     ####################################
 
+    def showDate(self):
+        print(self.timeInIteration)
+
     def showTemp(self):
         print(sendAndReceive(self.ser, self.tempAsk))
         return sendAndReceive(self.ser, self.tempAsk)

@@ -7,13 +7,13 @@ from functions import *
 chamber1 = Chamber()
 
 for i in range(10):
-    time.sleep(1)
-    chamber1.showTemp()
-    print('')
-    chamber1.humiData()
-    print('')
-    print('')
-
+    # time.sleep(1)
+    # chamber1.showTemp()
+    # print('')
+    # #chamber1.humiData()
+    # print('')
+    # print('')
+    chamber1.showDate()
     # chamber1.tempData()
     # print("")
     # print("")
