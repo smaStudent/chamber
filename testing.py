@@ -9,8 +9,8 @@ arrayNp = np.array(chamber1.showTemp())
 
 for i in range(10):
     time.sleep(1)
-    print(chamber1.showTemp())
-    print(changeAnsForTable())
+    print("odp bezposrednia", chamber1.showTemp())
+    print(changeAnsForTable(chamber1.showTemp()))
 
 for i in arrayNp:
     print(i)
