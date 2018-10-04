@@ -49,6 +49,7 @@ def changeAnsForTable(ans):
             tempStr = tempStr + c
         elif c == ',':
             if iteration == 0:
+                print("To sie wywala? ",tempStr)
                 PV = retFloatFromString(tempStr)
                 tempStr = str()
             elif iteration == 1:
