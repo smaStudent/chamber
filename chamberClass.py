@@ -71,57 +71,57 @@ class Chamber:
     ######### helpful function #########
     ####################################
 
-    def showTemp(self):
-        print(sendAndReceive(self.ser, self.tempAsk))
-
-    def dealWithTemp(self):
-        global highLim, lowLim, tempSV, tempPV
-        highLim = str()
-        lowLim = str()
-        tempSV = str()
-        tempPV = str()
-        tempStr = str()
-        whichIter = 0
-        ansTemp = sendAndReceive(self.ser, self.tempAsk)
-        print("Odpowiedz z sendAndReceive: ", ansTemp)
-        # here check if we didn't get an error
-
-        for c in ansTemp:
-            if c == ',':
-                whichIter = whichIter + 1
-                tempStr = None
-                tempStr = str()
-            else:
-                tempStr = tempStr + str(c)
-
-            tempInt = int(tempStr)
-
-            if whichIter == 0:
-                tempPV = tempInt
-            if whichIter == 1:
-                tempSV = tempInt
-            if whichIter == 2:
-                highLim = tempInt
-            if whichIter == 3:
-                lowLim = tempInt
-
-        print("temperetura, sciagnieta")
-        print("temperatura to: ", tempPV)
-        return [str(self.timeInIteration.year), str(self.timeInIteration.month), str(self.timeInIteration.day),
-                str(self.timeInIteration.hour), str(self.timeInIteration.minute), str(self.timeInIteration.second),
-                str(tempPV), str(tempSV), str(highLim), str(lowLim)]
-
-        # self.tempTab[self.iteration, 0] = str(self.timeInIteration.year)
-        # self.tempTab[self.iteration, 1] = str(self.timeInIteration.month)
-        # self.tempTab[self.iteration, 2] = str(self.timeInIteration.day)
-        # self.tempTab[self.iteration, 3] = str(self.timeInIteration.hour)
-        # self.tempTab[self.iteration, 4] = str(self.timeInIteration.minute)
-        # self.tempTab[self.iteration, 5] = str(self.timeInIteration.second)
-        # self.tempTab[self.iteration, 6] = str(tempPV)
-        # self.tempTab[self.iteration, 7] = str(tempSV)
-        # self.tempTab[self.iteration, 8] = str(highLim)
-        # self.tempTab[self.iteration, 9] = str(lowLim)
-        # print("temperetura, sciagnieta")
+    # def showTemp(self):
+    #     print(sendAndReceive(self.ser, self.tempAsk))
+    #
+    # def dealWithTemp(self):
+    #     global highLim, lowLim, tempSV, tempPV
+    #     highLim = str()
+    #     lowLim = str()
+    #     tempSV = str()
+    #     tempPV = str()
+    #     tempStr = str()
+    #     whichIter = 0
+    #     ansTemp = sendAndReceive(self.ser, self.tempAsk)
+    #     print("Odpowiedz z sendAndReceive: ", ansTemp)
+    #     # here check if we didn't get an error
+    #
+    #     for c in ansTemp:
+    #         if c == ',':
+    #             whichIter = whichIter + 1
+    #             tempStr = None
+    #             tempStr = str()
+    #         else:
+    #             tempStr = tempStr + str(c)
+    #
+    #         tempInt = int(tempStr)
+    #
+    #         if whichIter == 0:
+    #             tempPV = tempInt
+    #         if whichIter == 1:
+    #             tempSV = tempInt
+    #         if whichIter == 2:
+    #             highLim = tempInt
+    #         if whichIter == 3:
+    #             lowLim = tempInt
+    #
+    #     print("temperetura, sciagnieta")
+    #     print("temperatura to: ", tempPV)
+    #     return [str(self.timeInIteration.year), str(self.timeInIteration.month), str(self.timeInIteration.day),
+    #             str(self.timeInIteration.hour), str(self.timeInIteration.minute), str(self.timeInIteration.second),
+    #             str(tempPV), str(tempSV), str(highLim), str(lowLim)]
+    #
+    #     # self.tempTab[self.iteration, 0] = str(self.timeInIteration.year)
+    #     # self.tempTab[self.iteration, 1] = str(self.timeInIteration.month)
+    #     # self.tempTab[self.iteration, 2] = str(self.timeInIteration.day)
+    #     # self.tempTab[self.iteration, 3] = str(self.timeInIteration.hour)
+    #     # self.tempTab[self.iteration, 4] = str(self.timeInIteration.minute)
+    #     # self.tempTab[self.iteration, 5] = str(self.timeInIteration.second)
+    #     # self.tempTab[self.iteration, 6] = str(tempPV)
+    #     # self.tempTab[self.iteration, 7] = str(tempSV)
+    #     # self.tempTab[self.iteration, 8] = str(highLim)
+    #     # self.tempTab[self.iteration, 9] = str(lowLim)
+    #     # print("temperetura, sciagnieta")
 
     def dealWithHumi(self):
         global highLim, lowLim, humiSV, humiPV

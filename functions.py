@@ -16,7 +16,7 @@ def saveTableToFile(obj, table):
         obj.close()
 
 def changeAnsToTable(ans):
-
+    return 'aa'
 
 
 ############### OLD ONE ##################
