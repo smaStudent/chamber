@@ -71,9 +71,9 @@ class Chamber:
     ######### helpful function #########
     ####################################
 
-    # def showTemp(self):
-    #     print(sendAndReceive(self.ser, self.tempAsk))
-    #
+    def showTemp(self):
+        print(sendAndReceive(self.ser, self.tempAsk))
+
     # def dealWithTemp(self):
     #     global highLim, lowLim, tempSV, tempPV
     #     highLim = str()
@@ -177,6 +177,7 @@ class Chamber:
         self.dealWithTemp()
         self.dealWithHumi()
         print("getNewVal, dziala chyba")
+
 ################### OLD CODE ###############################
 
 
