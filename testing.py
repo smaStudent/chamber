@@ -13,7 +13,7 @@ for i in range(10):
     # #chamber1.humiData()
     # print('')
     # print('')
-    chamber1.showDate()
+    chamber1.update()
     # chamber1.tempData()
     # print("")
     # print("")
