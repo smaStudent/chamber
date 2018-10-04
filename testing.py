@@ -1,6 +1,6 @@
 import numpy as np
 import time
- #import MySQLdb
+# import MySQLdb
 from chamberClass import Chamber
 from functions import *
 
@@ -8,4 +8,8 @@ chamber1 = Chamber()
 
 for i in range(10):
     time.sleep(1)
-    chamber1.showHumi()
+    chamber1.humiData()
+    print('')
+    chamber1.tempData()
+    print("")
+    print("")
