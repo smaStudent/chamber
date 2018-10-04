@@ -45,7 +45,6 @@ def changeAnsForTable(ans):
     low = 0.0
     max = 0.0
     tempStr = str()
-    wasThereComma = False
     iteration = 0
 
     for c in ans:
@@ -53,7 +52,6 @@ def changeAnsForTable(ans):
             tempStr = tempStr + c
         elif c == ',':
             if iteration == 0:
-                print("To sie wywala? ", tempStr)
                 PV = retFloatFromString(tempStr)
                 tempStr = str()
             elif iteration == 1:
