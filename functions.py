@@ -15,6 +15,9 @@ def saveTableToFile(obj, table):
             obj.write('\n')
         obj.close()
 
+def changeAnsToTable(ans):
+
+
 
 ############### OLD ONE ##################
 #

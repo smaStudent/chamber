@@ -1,7 +1,7 @@
 import numpy as np
 #import MySQLdb
+from chamberClass import Chamber
 
-array = np.zeros([50,50])
+chamber1 = Chamber()
 
-print(type(array))
-print(str(array.shape()))
+chamber1.showTemp()
