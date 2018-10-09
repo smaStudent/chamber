@@ -48,6 +48,7 @@ class Chamber:
         period = datetime.datetime.now()
         if period.second % self.periodOfRead == 0:  # if periodOfRead seconds passed, we do what is inside the if
             # statement
+            print(self.counter)
             self.timeInIteration = datetime.datetime.now()
             self.tempTab.append(self.tempData())
             self.humiTab.append(self.humiData())
