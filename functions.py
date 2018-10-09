@@ -68,17 +68,3 @@ def changeAnsForTable(ans):
 
     return PV, SP, low, max
 
-############### OLD ONE ##################
-#
-# def sendAndReadFirst(serialObject):
-#     serialObject.write(b'SRQ?\r\n')
-#     time.sleep(0.2)
-#     ans = serialObject.readline()
-#     return ans
-#
-#
-# def sendAndReadTemp(serialObject):
-#     serialObject.write(b'TEMP?\r\n')
-#     time.sleep(0.2)
-#     ans = serialObject.readline()
-#     return ans
