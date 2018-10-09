@@ -48,7 +48,6 @@ class Chamber:
         period = datetime.datetime.now()
         if period.second % self.periodOfRead == 0:  # if periodOfRead seconds passed, we do what is inside the if
             # statement
-            print(self.counter)
             self.timeInIteration = datetime.datetime.now()
             self.tempTab.append(self.tempData())
             self.humiTab.append(self.humiData())
@@ -62,6 +61,7 @@ class Chamber:
                     print("Error in saving the file")
 
                 self.counter = 0
+
             self.counter = self.counter+1
 
     ####################################
@@ -81,10 +81,10 @@ class Chamber:
 
     def tempData(self):
         PV, SP, lowVal, maxVal = changeAnsForTable(sendAndReceive(self.ser, self.tempAsk))
-        # print(self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal)
+        print("TEMP: ", self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal)
         return self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal
 
     def humiData(self):
         PV, SP, lowVal, maxVal = changeAnsForTable(sendAndReceive(self.ser, self.humiAsk))
-        # print(self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal)
+        print("HUMI: ", self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal)
         return self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal
