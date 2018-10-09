@@ -12,14 +12,14 @@ for i in range(10):
     chamber1.update()
     np.zeros([50,10])
 
-    chamber1.humiData()
-    print('')
-    print('')
-
-    chamber1.humiData()
-    print("")
-    print("")
-
+    # chamber1.humiData()
+    # print('')
+    # print('')
+    #
+    # chamber1.humiData()
+    # print("")
+    # print("")
+    #
 
 
 
