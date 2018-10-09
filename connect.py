@@ -3,7 +3,7 @@ import time
 
 chamber1 = Chamber()
 
-for i in range(1000):
+while True:
     chamber1.update()
 
 
