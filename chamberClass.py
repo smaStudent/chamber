@@ -18,8 +18,8 @@ class Chamber:
         self.ser.write_timeout = 2
         self.ser.parity = serial.PARITY_NONE
         self.ser.dsrdtr = True
-        self.periodOfRead = 20  # seconds
-        self.amountOfDataInTabs = 100
+        self.periodOfRead = 10  # seconds
+        self.amountOfDataInTabs = 10
         self.counter = 0
         self.tempFile = 'tempData.txt'
         self.humiFile = 'humiData.txt'
@@ -62,6 +62,7 @@ class Chamber:
                     print("Error in saving the file")
 
                 self.counter = 0
+            self.counter = self.counter+1
 
     ####################################
     ######### helpful function #########
