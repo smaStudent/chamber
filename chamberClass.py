@@ -1,10 +1,5 @@
-import serial
-import time
 # from errors import ErrorDict        # to bedzie potrzebne do obslugi bledow
-import datetime
 from functions import *
-import numpy as np
-
 
 
 class Chamber:
@@ -24,6 +19,10 @@ class Chamber:
         self.ser.parity = serial.PARITY_NONE
         self.ser.dsrdtr = True
         self.periodOfRead = 20  # seconds
+        self.amountOfDataInTabs = 100
+        self.counter = 0
+        self.tempFile = 'tempData.txt'
+        self.humiFile = 'humiData.txt'
 
         # commands for having a response
         self.resetCommand = 'SRQ?\r\n'
@@ -35,8 +34,8 @@ class Chamber:
 
         # check if we have open connection
 
-        # self.tempTab = np.array(50, 50, np.int32)
-        # self.humiTab = np.array()
+        self.tempTab = []
+        self.humiTab = []
 
         self.ser.open()
 
@@ -47,10 +46,21 @@ class Chamber:
 
     def update(self):
         period = datetime.datetime.now()
-        if period.second % 20 == 0:  # if 20 seconds passed, we do what is inside the if statement
+        if period.second % self.periodOfRead == 0:  # if periodOfRead seconds passed, we do what is inside the if
+            # statement
             self.timeInIteration = datetime.datetime.now()
-            print("Dane wilgotnosc: ", self.humiData())
-            print("Dane temperatura: ", self.tempData())
+            self.tempTab.append(self.tempData())
+            self.humiTab.append(self.humiData())
+            if self.amountOfDataInTabs == self.counter:
+                try:
+                    saveToFile(self.tempFile, self.tempTab)     # we passed string with name and tab contains data from chamber
+                    saveToFile(self.humiFile, self.humiTab)     # same here
+                    self.tempTab = []                           # clear the tab if we succeed
+                    self.humiTab = []                           # same here
+                except:
+                    print("Error in saving the file")
+
+                self.counter = 0
 
     ####################################
     ######### helpful function #########
@@ -76,5 +86,3 @@ class Chamber:
         PV, SP, lowVal, maxVal = changeAnsForTable(sendAndReceive(self.ser, self.humiAsk))
         # print(self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal)
         return self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal
-
-

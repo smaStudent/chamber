@@ -11,13 +11,6 @@ def sendAndReceive(serialObject, message):
     return ans
 
 
-def saveTableToFile(obj, table):
-    for i in table:
-        obj.write(str(i))
-        obj.write('\n')
-    obj.close()
-
-
 def retFloatFromString(givStr):
     retFloat = 0.0
     newFirstStr = str()
@@ -68,3 +61,10 @@ def changeAnsForTable(ans):
 
     return PV, SP, low, max
 
+
+def saveToFile(name, tab):
+    file = open(name, "a")
+    for i in tab:
+        file.write(str(i)[1:-1]+"\n")
+
+    file.close()
