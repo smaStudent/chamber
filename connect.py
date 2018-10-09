@@ -3,11 +3,9 @@ import time
 
 chamber1 = Chamber()
 
-for i in range(100):
+for i in range(1000):
     chamber1.update()
-    #chamber1.showTemp()
-    print('')
-    time.sleep(2)
+
 
 
 
