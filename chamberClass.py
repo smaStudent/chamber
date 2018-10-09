@@ -61,7 +61,7 @@ class Chamber:
                     print("Error in saving the file")
 
                 self.counter = 0
-
+            time.sleep(0.99)
             self.counter = self.counter+1
 
     ####################################
