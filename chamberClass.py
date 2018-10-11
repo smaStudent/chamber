@@ -49,6 +49,7 @@ class Chamber:
         saveToFile(self.tempFile, self.tempTab)
         saveToFile(self.humiFile, self.humiTab)
         # here we can add feature like switch on red LED
+        print("We end work for now, you have your data in files")
 
     def update(self):
         period = datetime.datetime.now()
@@ -72,6 +73,7 @@ class Chamber:
 
             time.sleep(0.99)
             self.counter = self.counter + 1
+            self.checkIfItConnected()
 
     ####################################
     ######### helpful function #########
