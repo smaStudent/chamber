@@ -49,21 +49,23 @@ class Chamber:
         if period.second % self.periodOfRead == 0:  # if periodOfRead seconds passed, we do what is inside the if
             # statement
             self.timeInIteration = datetime.datetime.now()
+            print("Iteracja nr: ", self.counter)
             self.tempTab.append(self.tempData())
             self.humiTab.append(self.humiData())
             if self.amountOfDataInTabs == self.counter:
                 try:
-                    saveToFile(self.tempFile, self.tempTab)     # we passed string with name and tab contains data from chamber
-                    saveToFile(self.humiFile, self.humiTab)     # same here
-                    self.tempTab = []                           # clear the tab if we succeed
-                    self.humiTab = []                           # same here
+                    saveToFile(self.tempFile,
+                               self.tempTab)  # we passed string with name and tab contains data from chamber
+                    saveToFile(self.humiFile, self.humiTab)  # same here
+                    self.tempTab = []  # clear the tab if we succeed
+                    self.humiTab = []  # same here
                 except:
                     print("Error in saving the file")
 
                 self.counter = 0
-            print("Iteracja nr: ", self.counter)
+
             time.sleep(0.99)
-            self.counter = self.counter+1
+            self.counter = self.counter + 1
 
     ####################################
     ######### helpful function #########
@@ -82,10 +84,44 @@ class Chamber:
 
     def tempData(self):
         PV, SP, lowVal, maxVal = changeAnsForTable(sendAndReceive(self.ser, self.tempAsk))
-        print("TEMP: ", self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal)
+        print("TEMP: ", self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day,
+              self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal,
+              maxVal)
         return self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal
 
     def humiData(self):
         PV, SP, lowVal, maxVal = changeAnsForTable(sendAndReceive(self.ser, self.humiAsk))
-        print("HUMI: ", self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal)
+        print("HUMI: ", self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day,
+              self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal,
+              maxVal)
         return self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal
+
+    def checkIfItConnected(self):
+        if self.ser.isOpen():
+            print("It's connected, we can rock the data!")
+        else:
+            print("We have lost connection with chamber, I'm saving data to the files")  # if we later will add data
+            # to MySQL we need to to add the data to this as well
+            saveToFile(self.tempTab, " udalo sie tu byc ")
+            saveToFile(self.tempFile, self.tempTab)  # we don't wont to lose the data
+            self.tempTab = []
+            saveToFile(self.humiFile, self.humiTab)  # we don't wont to lose the data
+            self.humiTab = []
+            self.counter = 0
+
+
+            print('We\'ve got a problem, i will try to reconnect with the chamber...')
+            counter = 0
+            while self.ser.isOpen() and counter < 1000:
+                self.ser = serial.Serial()  # we have to check if this is not a problem
+                self.ser.port = '/dev/ttyUSB0'  # this could be cause of trouble!!!! if someone changed the port
+                self.ser.baudrate = 9600
+                self.ser.polarity = None
+                self.ser.bytesize = serial.EIGHTBITS
+                self.ser.stopbits = serial.STOPBITS_ONE
+                self.ser.timeout = 1
+                self.ser.write_timeout = 2
+                self.ser.parity = serial.PARITY_NONE
+                self.ser.dsrdtr = True
+
+                time.sleep(2)  # waiting for changes
