@@ -75,7 +75,6 @@ class Chamber:
             time.sleep(0.99)
             self.counter = self.counter + 1
 
-
     ####################################
     ######### helpful function #########
     ####################################
@@ -84,26 +83,38 @@ class Chamber:
         print(self.timeInIteration)
 
     def showTemp(self):
-        print(sendAndReceive(self.ser, self.tempAsk))
-        return sendAndReceive(self.ser, self.tempAsk)
+        if self.ser.isOpen():
+            print(sendAndReceive(self.ser, self.tempAsk))
+            return sendAndReceive(self.ser, self.tempAsk)
+        else:
+            print("Lost connection with chamber")
 
     def showHumi(self):
-        print(sendAndReceive(self.ser, self.humiAsk))
-        return sendAndReceive(self.ser, self.humiAsk)
+        if self.ser.isOpen():
+            print(sendAndReceive(self.ser, self.humiAsk))
+            return sendAndReceive(self.ser, self.humiAsk)
+        else:
+            print("Lost connection with chamber")
 
     def tempData(self):
-        PV, SP, lowVal, maxVal = changeAnsForTable(sendAndReceive(self.ser, self.tempAsk))
-        print("TEMP: ", self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day,
-              self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal,
-              maxVal)
-        return self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal
+        if self.ser.isOpen():
+            PV, SP, lowVal, maxVal = changeAnsForTable(sendAndReceive(self.ser, self.tempAsk))
+            print("TEMP: ", self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day,
+                  self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal,
+                  maxVal)
+            return self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal
+        else:
+            print("Lost connection with chamber")
 
     def humiData(self):
-        PV, SP, lowVal, maxVal = changeAnsForTable(sendAndReceive(self.ser, self.humiAsk))
-        print("HUMI: ", self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day,
-              self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal,
-              maxVal)
-        return self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal
+        if self.ser.isOpen():
+            PV, SP, lowVal, maxVal = changeAnsForTable(sendAndReceive(self.ser, self.humiAsk))
+            print("HUMI: ", self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day,
+                  self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal,
+                  maxVal)
+            return self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal
+        else:
+            print("Lost connection with chamber")
 
     def checkIfItConnected(self):
         if self.ser.isOpen():
@@ -117,7 +128,6 @@ class Chamber:
             saveToFile(self.humiFile, self.humiTab)  # we don't wont to lose the data
             self.humiTab = []
             self.counter = 0
-
 
             print('We\'ve got a problem, i will try to reconnect with the chamber...')
             counter = 0
@@ -134,3 +144,4 @@ class Chamber:
                 self.ser.dsrdtr = True
 
                 time.sleep(2)  # waiting for changes
+                counter = counter + 1
