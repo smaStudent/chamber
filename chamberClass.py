@@ -44,6 +44,12 @@ class Chamber:
         else:
             print("ERROR, can not connect with chamber!")
 
+    def __del__(self):
+        self.ser.close()
+        saveToFile(self.tempFile, self.tempTab)
+        saveToFile(self.humiFile, self.humiTab)
+        # here we can add feature like switch on red LED
+
     def update(self):
         period = datetime.datetime.now()
         if period.second % self.periodOfRead == 0:  # if periodOfRead seconds passed, we do what is inside the if
