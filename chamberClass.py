@@ -55,6 +55,7 @@ class Chamber:
         period = datetime.datetime.now()
         if period.second % self.periodOfRead == 0:  # if periodOfRead seconds passed, we do what is inside the if
             # statement
+            self.checkIfItConnected()
             self.timeInIteration = datetime.datetime.now()
             print("Iteracja nr: ", self.counter)
             self.tempTab.append(self.tempData())
@@ -73,7 +74,7 @@ class Chamber:
 
             time.sleep(0.99)
             self.counter = self.counter + 1
-            self.checkIfItConnected()
+
 
     ####################################
     ######### helpful function #########
