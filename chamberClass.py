@@ -101,7 +101,7 @@ class Chamber:
         if self.ser.isOpen():
             PV, SP, lowVal, maxVal = changeAnsForTable(sendAndReceive(self.ser, self.tempAsk))
             print("TEMP: ", self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day,
-                  self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal,
+                  self.timeInIteration.hour+2, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal,
                   maxVal)
             return self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour + 2, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal
         else:
@@ -111,7 +111,7 @@ class Chamber:
         if self.ser.isOpen():
             PV, SP, lowVal, maxVal = changeAnsForTable(sendAndReceive(self.ser, self.humiAsk))
             print("HUMI: ", self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day,
-                  self.timeInIteration.hour, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal,
+                  self.timeInIteration.hour+2, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal,
                   maxVal)
             return self.timeInIteration.year, self.timeInIteration.month, self.timeInIteration.day, self.timeInIteration.hour + 2, self.timeInIteration.minute, self.timeInIteration.second, PV, SP, lowVal, maxVal
         else:
