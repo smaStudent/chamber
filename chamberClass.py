@@ -46,7 +46,7 @@ class Chamber:
             print("ERROR, can not connect with chamber!")
 
     def __del__(self):
-        self.ser.close()
+        # self.ser.close()
         saveToFile(self.tempFile, self.tempTab)
         saveToFile(self.humiFile, self.humiTab)
         # here we can add feature like switch on red LED
