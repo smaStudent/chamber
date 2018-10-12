@@ -1,0 +1,11 @@
+[0;1;32m●[0m mariadb.service - MariaDB database server
+   Loaded: loaded (/lib/systemd/system/mariadb.service; enabled; vendor preset: enabled)
+   Active: [0;1;32mactive (running)[0m since Thu 2018-10-11 13:00:21 UTC; 31min ago
+ Main PID: 2158 (mysqld)
+   Status: "Taking your SQL requests now..."
+   CGroup: /system.slice/mariadb.service
+           └─2158 /usr/sbin/mysqld
+
+Oct 11 13:00:17 beaglebone systemd[1]: Starting MariaDB database server...
+Oct 11 13:00:20 beaglebone mysqld[2158]: 2018-10-11 13:00:20 3063676928 [Note] /usr/sbin/mysqld (mysqld 10.1.26-MariaDB-0+deb9u1) starting as process 2158 ...
+Oct 11 13:00:21 beaglebone systemd[1]: Started MariaDB database server.
