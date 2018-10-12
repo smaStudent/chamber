@@ -119,39 +119,10 @@ class Chamber:
 
     def checkIfItConnected(self):
 
-        try:
-            self.ser.isOpen()
-
-        except serial.SerialException:
-            print("We have lost connection with chamber, I'm saving data to the files")  # if we later will add data
-            # to MySQL we need to to add the data to this as well
-            saveToFile(self.tempTab, " udalo sie tu byc ")
-            saveToFile(self.tempFile, self.tempTab)  # we don't wont to lose the data
-            self.tempTab = []
-            saveToFile(self.humiFile, self.humiTab)  # we don't wont to lose the data
-            self.humiTab = []
-            self.counter = 0
-
-            print('We\'ve got a problem, i will try to reconnect with the chamber...')
-            counter = 0
-            while (not self.ser.isOpen()) and counter < 100:
-                self.ser = serial.Serial()  # we have to check if this is not a problem
-                self.ser.port = '/dev/ttyUSB0'  # this could be cause of trouble!!!! if someone changed the port
-                self.ser.baudrate = 9600
-                self.ser.polarity = None
-                self.ser.bytesize = serial.EIGHTBITS
-                self.ser.stopbits = serial.STOPBITS_ONE
-                self.ser.timeout = 1
-                self.ser.write_timeout = 2
-                self.ser.parity = serial.PARITY_NONE
-                self.ser.dsrdtr = True
-
-                time.sleep(2)  # waiting for changes
-                counter = counter + 1
-
-        # if self.ser.isOpen():
-        #     print("It's connected, we can rock the data!")
-        # else:
+        # try:
+        #     self.ser.isOpen()
+        #
+        # except serial.SerialException:
         #     print("We have lost connection with chamber, I'm saving data to the files")  # if we later will add data
         #     # to MySQL we need to to add the data to this as well
         #     saveToFile(self.tempTab, " udalo sie tu byc ")
@@ -161,9 +132,7 @@ class Chamber:
         #     self.humiTab = []
         #     self.counter = 0
         #
-        #     self.ser.close()
-        #
-        #     print("We've got a problem, i will try to reconnect with the chamber...")
+        #     print('We\'ve got a problem, i will try to reconnect with the chamber...')
         #     counter = 0
         #     while (not self.ser.isOpen()) and counter < 100:
         #         self.ser = serial.Serial()  # we have to check if this is not a problem
@@ -179,3 +148,34 @@ class Chamber:
         #
         #         time.sleep(2)  # waiting for changes
         #         counter = counter + 1
+
+        if self.ser.isOpen():
+            print("It's connected, we can rock the data!")
+        else:
+            print("We have lost connection with chamber, I'm saving data to the files")  # if we later will add data
+            # to MySQL we need to to add the data to this as well
+            saveToFile(self.tempTab, " udalo sie tu byc ")
+            saveToFile(self.tempFile, self.tempTab)  # we don't wont to lose the data
+            self.tempTab = []
+            saveToFile(self.humiFile, self.humiTab)  # we don't wont to lose the data
+            self.humiTab = []
+            self.counter = 0
+
+            self.ser.close()
+
+            print("We've got a problem, i will try to reconnect with the chamber...")
+            counter = 0
+            while (not self.ser.isOpen()) and counter < 100:
+                self.ser = serial.Serial()  # we have to check if this is not a problem
+                self.ser.port = '/dev/ttyUSB0'  # this could be cause of trouble!!!! if someone changed the port
+                self.ser.baudrate = 9600
+                self.ser.polarity = None
+                self.ser.bytesize = serial.EIGHTBITS
+                self.ser.stopbits = serial.STOPBITS_ONE
+                self.ser.timeout = 1
+                self.ser.write_timeout = 2
+                self.ser.parity = serial.PARITY_NONE
+                self.ser.dsrdtr = True
+
+                time.sleep(2)  # waiting for changes
+                counter = counter + 1
