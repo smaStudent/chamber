@@ -152,7 +152,8 @@ class Chamber:
         if self.ser.isOpen():
             print("It's connected, we can rock the data!")
         else:
-            print("We have lost connection with chamber, I'm saving data to the files")  # if we later will add data
+            print("We have lost connection with chamber, I'm saving data to the files")
+            # if we later will add data
             # to MySQL we need to to add the data to this as well
             saveToFile(self.tempTab, " udalo sie tu byc ")
             saveToFile(self.tempFile, self.tempTab)  # we don't wont to lose the data
