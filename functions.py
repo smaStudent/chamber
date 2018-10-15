@@ -6,7 +6,8 @@ import datetime
 def sendAndReceive(serialObject, message):
     if serialObject.isOpen():
         serialObject.write(bytearray(message, 'utf-8'))
-        time.sleep(0.2)
+        # time.sleep(0.2) we use flush() instead of time.sleep()
+        serialObject.flush()
         ans = serialObject.readline()
         ans = ans.decode("utf-8")
         return ans
