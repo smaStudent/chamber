@@ -1,23 +1,31 @@
 import pymysql as mysql
+import time
+import pymysql.cursors
 
-db = mysql.connect(host='mysql01.saxon.beep.pl',
-                   user='sub_saxon',
-                   passwd='passwd')
+connection = mysql.connect(host='mysql01.saxon.beep.pl',
+                           user='sub_saxon',
+                           passwd='passwd',
+                           db='test_database')
 
-print(db.ping())
-print(db.get_host_info())
-print(db.get_server_info())
-print(db.get_proto_info())
-print()
+try:
+    with connection.cursor() as cursor:
+        # Create a new record
 
+        cursor.execute("INSERT INTO chamber (time, temp, humi) VALUES (%s, %s, %s)",
+                       (str(time.time()), str(150), str(300)))
 
+    # connection is not autocommit by default. So you must commit to save
+    # your changes.
+    connection.commit()
 
-db.close()
-
-
-
-
-
+    # with connection.cursor() as cursor:
+    #     # Read a single record
+    #     sql = "SELECT `time`, `temp` FROM 'chamber'"
+    #     cursor.execute(sql, ('',))
+    #     result = cursor.fetchone()
+    #     print(result)
+finally:
+    connection.close()
 
 
 # import numpy as np

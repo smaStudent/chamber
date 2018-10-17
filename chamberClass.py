@@ -54,6 +54,7 @@ class Chamber:
 
     def update(self):
         period = datetime.datetime.now()
+        saveTime(period)
         if period.second % self.periodOfRead == 0:  # if periodOfRead seconds passed, we do what is inside the if
             # statement
             self.checkIfItConnected()
