@@ -15,7 +15,7 @@ def sendAndReceive(serialObject, message):
 def saveTime(time):
     file = open("time.txt", "a")
     file.write(str(time))
-    print(str(time))
+    #print(str(time))
     file.close()
 
 
