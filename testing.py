@@ -1,5 +1,6 @@
 import pymysql as mysql
 import time
+import datetime
 import pymysql.cursors
 
 connection = mysql.connect(host='mysql01.saxon.beep.pl',
@@ -11,8 +12,8 @@ try:
     with connection.cursor() as cursor:
         # Create a new record
 
-        cursor.execute("INSERT INTO chamber (time, temp, humi) VALUES (%s, %s, %s)",
-                       (str(time.time()), str(150), str(300)))
+        cursor.execute("INSERT INTO testing (dateTime, temp, humi) VALUES (%s, %f, %f)",
+                       (str(datetime.datetime.now()), str(150.0), str(300.0)))
 
     # connection is not autocommit by default. So you must commit to save
     # your changes.
@@ -27,7 +28,19 @@ try:
 finally:
     connection.close()
 
+#
+# def insertIntoMySQL(year, month, day, hour, minutes, seconds, temp_PV, temp_SV, temp_min, temp_max, humi_PV, humi_SV, humi_min, humi_max):
+#     try:
+#         with connection.cursor() as cursor:
+#
+#             cursor.execute("INSERT INTO chamber (year, month, day, hour, minutes, second, temp_PV, temp_SP, temp_min_LV, temp_max_LV, humi_PV, humi_SP, humi_min_LV, humi_max_LV) VALUES (%)",
+#                        (str(time.time()), str(150), str(300)))
+#
+#
 
+##################################################################################################
+##################################################################################################
+##################################################################################################
 # import numpy as np
 # import time
 # # import MySQLdb
