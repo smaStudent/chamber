@@ -12,21 +12,6 @@ def sendAndReceive(serialObject, message):
         ans = ans.decode("utf-8")
         return ans
 
-<<<<<<< HEAD
-# def saveTime(time):
-#     file = open("time.txt", "a")
-#     file.write(str(time))
-#     print(str(time))
-#     file.close()
-=======
-def saveTime(time):
-    file = open("time.txt", "a")
-    file.write(str(time))
-    #print(str(time))
-    file.close()
->>>>>>> 43a6f529b90fd0bb4a5527f3c6ac6eb0eaab14ff
-
-
 def retFloatFromString(givStr):
     retFloat = 0.0
     newFirstStr = str()
