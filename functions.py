@@ -1,4 +1,4 @@
-import MySQLdb as mysql
+# import MySQLdb as mysql
 #import pymysql as mysql
 
 
@@ -142,11 +142,12 @@ def saveObjectToFile(name, obj):
 def saveTabMySQLTemp(hostGiven, userGiven, passwdGiven, dbGiven, tab):
     connection = mysql.connect('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database')
     for obj in tab:
+        dateTime, PV, SP, minLv, maxLv = obj.retAsTab()
         with connection.cursor() as cursor:
             cursor.execute(
                 "INSERT INTO chamberTemp (dateTime, PV, SP, minLevel, maxLevel) VALUES (%s, %s, %s, %s, %s)",
-                (obj.retAsTab()))
-            connection.commit()
+                (dateTime, PV, SP, minLv, maxLv))
+        connection.commit()
         print("Temp" + obj.__str__())
     
     connection.close()

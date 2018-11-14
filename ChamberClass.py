@@ -29,8 +29,8 @@ class Chamber:
         self.condInside = 'MON?\r\n'
         
         # consts that we need 
-        self.periodOfRead = 20
-        self.sizeOfTheTable = 50
+        self.periodOfRead = 10
+        self.sizeOfTheTable = 5
         
         try:
             self.ser.open()                         # openning the port
@@ -65,10 +65,12 @@ class Chamber:
             self.updateHumi(timeInUpdate)
 
         elif self.doWeNeedPushData():
-            saveTabMySQLTemp('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database', self.tempDataTable)
-            saveTabMySQLHumi('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database', self.humiDataTable)
             saveToFile("tempDataFile.txt", self.tempDataTable)
             saveToFile("humiDataFile.txt", self.humiDataTable)
+
+            saveTabMySQLTemp('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database', self.tempDataTable)
+            saveTabMySQLHumi('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database', self.humiDataTable)
+
             self.tempDataTable = []
             self.humiDataTable = []
 
