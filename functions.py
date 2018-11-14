@@ -1,5 +1,6 @@
-import MySQLdb as mysql
-#import pymysql as mysql
+#import MySQLdb as mysql
+import pymysql as mysql
+import datetime
 
 
 def sendAndReceive(serialObject, message):
@@ -156,10 +157,11 @@ def saveTabMySQLTemp(hostGiven, userGiven, passwdGiven, dbGiven, tab):
 def saveTabMySQLHumi(hostGiven, userGiven, passwdGiven, dbGiven, tab):
     connection = mysql.connect('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database')
     for obj in tab:
+        year, month, day, hour, minute, second, PV, SP, minLv, maxLv = obj.retAsTab()
         with connection.cursor() as cursor:
             cursor.execute(
                 "INSERT INTO chamberHumi (dateTime, PV, SP, minLevel, maxLevel) VALUES (%s, %s, %s, %s, %s)",
-                (obj.retAsTab()))
+                (datetime.datetime(year, month, day, hour, minute, second), PV, SP, minLv, maxLv))
             connection.commit()
         print("Humi: "+obj.__str__())
 
