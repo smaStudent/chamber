@@ -163,7 +163,7 @@ def saveTabMySQLHumi(hostGiven, userGiven, passwdGiven, dbGiven, tab):
         with connection.cursor() as cursor:
             cursor.execute(
                 "INSERT INTO chamberHumi (dateTime, PV, SP, minLevel, maxLevel) VALUES (%s, %s, %s, %s, %s)",
-                (datetime.datetime(year, month, day, hour, minute, second), PV, SP, minLv, maxLv))
+                (datetime.datetime(year, month, day, hour, minute, second).__str__(), PV, SP, minLv, maxLv))
             connection.commit()
         print("Humi: "+obj.__str__())
 
