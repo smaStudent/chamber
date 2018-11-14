@@ -29,8 +29,8 @@ class DataStruct:
         f.close()
 
     def retAsTab(self):
-        return self.dateTime.year, self.dateTime.month, self.dateTime.day, self.dateTime.hour, self.dateTime.minute, self.dateTime.second, self.PV, self.SP, self.minLv, self.maxLv
-
+        return self.dateTime, self.PV, self.SP, self.minLv, self.maxLv
+#self.dateTime.year, self.dateTime.month, self.dateTime.day, self.dateTime.hour, self.dateTime.minute, self.dateTime.second
     def __del__(self):
         self.dateTime = None
         self.PV = None
