@@ -1,29 +1,15 @@
-import pymysql as mysql
-import time
+import DataStruct
+from functions import *
 import datetime
-import pymysql.cursors
 
-connection = mysql.connect(host='',
-                           user='',
-                           passwd='',
-                           db='test_database')
+tempDataTable = []
+tempDataTable.append(DataStruct.DataStruct(datetime.datetime(2220,1,1,1,1,1), 10,32,42,12))
 
-try:
-    with connection.cursor() as cursor:
-        # Create a new record
+tempDataTable.append(DataStruct.DataStruct(datetime.datetime(2220,2,1,1,1,1), 10,32,42,12))
 
-        cursor.execute("INSERT INTO testing (dateTime, temp, humi) VALUES (%s, %f, %f)",
-                       (str(datetime.datetime.now()), str(150.0), str(300.0)))
+saveTabMySQLTemp('mysql01.saxon.beep.pl',
+                'sub_saxon',
+                'passwd',
+                'test_database',
+                 tempDataTable)
 
-    # connection is not autocommit by default. So you must commit to save
-    # your changes.
-    connection.commit()
-
-    # with connection.cursor() as cursor:
-    #     # Read a single record
-    #     sql = "SELECT `time`, `temp` FROM 'chamber'"
-    #     cursor.execute(sql, ('',))
-    #     result = cursor.fetchone()
-    #     print(result)
-finally:
-    connection.close()
