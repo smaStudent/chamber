@@ -147,7 +147,7 @@ def saveTabMySQLTemp(hostGiven, userGiven, passwdGiven, dbGiven, tab):
                 "INSERT INTO chamberTemp (dateTime, PV, SP, minLevel, maxLevel) VALUES (%s, %s, %s, %s, %s)",
                 (obj.retAsTab()))
             connection.commit()
-        print(obj.__str__())
+        print("Temp" + obj.__str__())
     
     connection.close()
 
@@ -160,6 +160,6 @@ def saveTabMySQLHumi(hostGiven, userGiven, passwdGiven, dbGiven, tab):
                 "INSERT INTO chamberHumi (dateTime, PV, SP, minLevel, maxLevel) VALUES (%s, %s, %s, %s, %s)",
                 (obj.retAsTab()))
             connection.commit()
-        print(obj.__str__())
+        print("Humi: "+obj.__str__())
 
     connection.close()

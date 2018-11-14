@@ -58,7 +58,6 @@ class Chamber:
         # print("We end work for now, you have your data in files")
 
     def update(self):
-        print("Teraz jestesmy w update() w ChamberClass")
         timeInUpdate = datetime.datetime.now()
         
         if timeInUpdate.second % self.periodOfRead == 0:
@@ -72,6 +71,8 @@ class Chamber:
             saveToFile("humiDataFile.txt", self.humiDataTable)
             self.tempDataTable = []
             self.humiDataTable = []
+
+        time.sleep(1)
 
 
     ####################################
