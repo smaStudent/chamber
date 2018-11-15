@@ -1,5 +1,5 @@
-#import MySQLdb as mysql
-import pymysql as mysql
+import MySQLdb as mysql
+# import pymysql as mysql
 import datetime
 
 
@@ -143,6 +143,7 @@ def saveObjectToFile(name, obj):
 def saveTabMySQLTemp(hostGiven, userGiven, passwdGiven, dbGiven, tab):
     connection = mysql.connect('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database')
     for obj in tab:
+        print("Temp" + obj.__str__())
         # year, month, day, hour, minute, second, PV, SP, minLv, maxLv = obj.retAsTab()
         # dateTime, PV, SP, minLv, maxLv = obj.retAsTab()
         with connection.cursor() as cursor:
@@ -150,7 +151,7 @@ def saveTabMySQLTemp(hostGiven, userGiven, passwdGiven, dbGiven, tab):
                 "INSERT INTO chamberTemp (dateTime, PV, SP, minLevel, maxLevel) VALUES (%s, %s, %s, %s, %s)",
                 (obj.retAsTab()))
             connection.commit()
-        print("Temp" + obj.__str__())
+
     
     connection.close()
 
@@ -158,6 +159,7 @@ def saveTabMySQLTemp(hostGiven, userGiven, passwdGiven, dbGiven, tab):
 def saveTabMySQLHumi(hostGiven, userGiven, passwdGiven, dbGiven, tab):
     connection = mysql.connect('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database')
     for obj in tab:
+        print("Humi: " + obj.__str__())
         # year, month, day, hour, minute, second, PV, SP, minLv, maxLv = obj.retAsTab()
         # dateTime, PV, SP, minLv, maxLv = obj.retAsTab()
         with connection.cursor() as cursor:
@@ -165,7 +167,6 @@ def saveTabMySQLHumi(hostGiven, userGiven, passwdGiven, dbGiven, tab):
                 "INSERT INTO chamberHumi (dateTime, PV, SP, minLevel, maxLevel) VALUES (%s, %s, %s, %s, %s)",
                 (obj.retAsTab()))
             connection.commit()
-        print("Humi: " + obj.__str__())
 
     connection.close()
 
