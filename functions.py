@@ -1,5 +1,5 @@
-import MySQLdb as mysql
-# import pymysql as mysql
+#import MySQLdb as mysql
+import pymysql as mysql
 import datetime
 
 
@@ -68,7 +68,7 @@ def changeAnsForTable(ans):
 def saveTabToFile(name, tab):
     file = open(name, "a")
     for obj in tab:
-        file.write(obj)
+        file.write(obj.__str__() + "\n")
     file.close()
 
 
