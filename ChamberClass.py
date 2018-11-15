@@ -65,8 +65,8 @@ class Chamber:
             self.updateHumi(timeInUpdate)
 
         elif self.doWeNeedPushData():
-            saveToFile("tempDataFile.txt", self.tempDataTable)
-            saveToFile("humiDataFile.txt", self.humiDataTable)
+            saveTabToFile("tempDataFile.txt", self.tempDataTable)
+            saveTabToFile("humiDataFile.txt", self.humiDataTable)
 
             saveTabMySQLTemp('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database', self.tempDataTable)
             saveTabMySQLHumi('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database', self.humiDataTable)
