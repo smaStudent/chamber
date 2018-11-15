@@ -5,10 +5,6 @@ def main():
     
     while 1:
         chamber.update()
-    
-
-
-
 
 
 if __name__ == '__main__':
