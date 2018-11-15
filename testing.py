@@ -3,6 +3,7 @@ from functions import *
 import datetime
 import pymysql as mysql
 
+
 tempDataTable = []
 tempDataTable.append(DataStruct.DataStruct(datetime.datetime(2220, 1, 1, 1, 1, 1), 10, 32, 42, 12))
 

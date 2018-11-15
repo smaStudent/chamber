@@ -1,5 +1,5 @@
-import MySQLdb as mysql
-# import pymysql as mysql
+# import MySQLdb as mysql
+import pymysql as mysql
 import datetime
 
 
@@ -65,12 +65,12 @@ def changeAnsForTable(ans):
 
 
 
-def saveToFile(name, tab):
+def saveTabToFile(name, tab):
     file = open(name, "a")
-    for i in tab:
-        file.write(i.__str__())
+    for obj in tab:
+        file.write(obj)
     file.close()
-
+    
 
 def saveObjectToFile(name, obj):
     file = open(name, 'a')
@@ -149,7 +149,7 @@ def saveTabMySQLTemp(hostGiven, userGiven, passwdGiven, dbGiven, tab):
             cursor.execute(
                 "INSERT INTO chamberTemp (dateTime, PV, SP, minLevel, maxLevel) VALUES (%s, %s, %s, %s, %s)",
                 (datetime.datetime(year, month, day, hour, minute, second), PV, SP, minLv, maxLv))
-        connection.commit()
+            connection.commit()
         print("Temp" + obj.__str__())
     
     connection.close()
@@ -163,7 +163,7 @@ def saveTabMySQLHumi(hostGiven, userGiven, passwdGiven, dbGiven, tab):
         with connection.cursor() as cursor:
             cursor.execute(
                 "INSERT INTO chamberHumi (dateTime, PV, SP, minLevel, maxLevel) VALUES (%s, %s, %s, %s, %s)",
-                (datetime.datetime(year, month, day, hour, minute, second).__str__(), PV, SP, minLv, maxLv))
+                (datetime.datetime(year, month, day, hour, minute, second), PV, SP, minLv, maxLv))
             connection.commit()
         print("Humi: "+obj.__str__())
 

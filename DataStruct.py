@@ -20,7 +20,7 @@ class DataStruct:
         self.maxLv = max
 
     def __str__(self):
-        return str(self.dateTime) + str(', ') + str(self.PV) + str(', ') + str(self.SP) + str(', ') + str(
+        return self.dateTime.__str__() + str(', ') + str(self.PV) + str(', ') + str(self.SP) + str(', ') + str(
             self.minLv) + str(', ') + str(self.maxLv)
 
     def saveToFile(self, fileName):
@@ -30,7 +30,8 @@ class DataStruct:
 
     def retAsTab(self):
         return self.dateTime.year, self.dateTime.month, self.dateTime.day, self.dateTime.hour, self.dateTime.minute, self.dateTime.second, self.PV, self.SP, self.minLv, self.maxLv
-#self.dateTime.year, self.dateTime.month, self.dateTime.day, self.dateTime.hour, self.dateTime.minute, self.dateTime.second
+
+    # self.dateTime.year, self.dateTime.month, self.dateTime.day, self.dateTime.hour, self.dateTime.minute, self.dateTime.second
     def __del__(self):
         self.dateTime = None
         self.PV = None
