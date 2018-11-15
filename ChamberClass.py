@@ -97,7 +97,8 @@ class Chamber:
 
     def updateHumi(self, currentTime):
         print("Robimy teraz w ChamberClass, humiData")
-        self.humiDataTable.append(DataStruct.DataStruct(currentTime, changeAnsForTable(sendAndReceive(self.ser, self.humiAsk))))
+        PV, SP, lowLv, maxLv = changeAnsForTable(sendAndReceive(self.ser, self.humiAsk))
+        self.humiDataTable.append(DataStruct.DataStruct(currentTime, PV, SP, lowLv, maxLv))
 
 
     def getHumi(self, whichOne = None):
