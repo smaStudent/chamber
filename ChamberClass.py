@@ -83,7 +83,8 @@ class Chamber:
 
     def updateTemp(self, currentTime):
         print("Robimy teraz w ChamberClass, tempData")
-        self.tempDataTable.append(DataStruct.DataStruct(currentTime, changeAnsForTable(sendAndReceive(self.ser, self.tempAsk))))
+        PV, SP, lowLv, maxLv = changeAnsForTable(sendAndReceive(self.ser, self.tempAsk))
+        self.tempDataTable.append(DataStruct.DataStruct(currentTime, PV, SP, lowLv, maxLv))
 
 
     def getTemp(self, whichOne = None):
