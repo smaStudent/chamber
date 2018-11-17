@@ -65,8 +65,8 @@ class Chamber:
             saveTabToFile("tempDataFile.txt", self.tempDataTable)
             saveTabToFile("humiDataFile.txt", self.humiDataTable)
 
-            saveTabMySQLTemp('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database', self.tempDataTable)
-            saveTabMySQLHumi('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database', self.humiDataTable)
+            saveTabMySQLTemp('', '', '', 'test_database', self.tempDataTable)
+            saveTabMySQLHumi('', '', '', 'test_database', self.humiDataTable)
 
             self.tempDataTable = []
             self.humiDataTable = []
