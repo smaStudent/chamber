@@ -61,6 +61,9 @@ class Chamber:
             self.updateTemp(timeInUpdate)
             self.updateHumi(timeInUpdate)
 
+            print(self.getTemp().__str__())
+            print(self.getHumi().__str__())
+
         elif self.doWeNeedPushData():
             saveTabToFile("tempDataFile.txt", self.tempDataTable)
             saveTabToFile("humiDataFile.txt", self.humiDataTable)
