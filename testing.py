@@ -18,4 +18,3 @@ tempDataTable.append(DataStruct.DataStruct(datetime.datetime(2220, 2, 1, 1, 1, 1
 
 print(tempDataTable[-1])
 
-

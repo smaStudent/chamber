@@ -109,3 +109,24 @@ class Chamber:
             return True
         else:
             return False
+
+    def checkCurrentProg(self):
+        # PRGM                    Controls the current program.
+
+        print("odp na ROM? \t",           sendAndReceive(self.ser, 'ROM?\r\n'))
+        print("odp na SRQ?\t",              sendAndReceive(self.ser, 'RUN PRGM SRQ?\r\n'))
+        print("odp na MASK?\t",      sendAndReceive(self.ser, 'MASK?\r\n'))
+        print("odp na ALARM?\t",           sendAndReceive(self.ser, 'ALARM?\r\n'))
+
+        print("odp na KEYPROTECT? \t", sendAndReceive(self.ser, 'KEYPROTECT?\r\n'))
+        print("odp na TYPE?\t", sendAndReceive(self.ser, 'TYPE?\r\n'))
+        print("odp na MODE?\t", sendAndReceive(self.ser, 'MODE?\r\n'))
+        print("odp na MON?\t", sendAndReceive(self.ser, 'MON?\r\n'))
+
+        print("odp na SET?\t", sendAndReceive(self.ser, 'SET?\r\n'))
+        print("odp na REF?\t", sendAndReceive(self.ser, 'REF?\r\n'))
+        print("odp na PRGM MON?\t", sendAndReceive(self.ser, 'PRGM MON?\r\n'))
+        print("odp na PRGM DATA?\t", sendAndReceive(self.ser, 'PRGM DATA?\r\n'))
+
+        print("odp na RUN PRGM MON?\t", sendAndReceive(self.ser, 'RUN PRGM MON?\r\n'))
+        print("odp na RUN PRGM?\t", sendAndReceive(self.ser, 'RUN PRGM?\r\n'))
