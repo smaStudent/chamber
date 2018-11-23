@@ -1,7 +1,7 @@
 import DataStruct
 from functions import *
 import datetime
-import pymysql as mysql
+# import pymysql as mysql
 
 
 tempDataTable = []
