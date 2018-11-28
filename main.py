@@ -3,7 +3,6 @@ def main():
     
     chamber = Chamber()
 
-    chamber.checkCurrentProg()
     
     while 1:
         chamber.update()

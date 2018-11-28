@@ -1,7 +1,9 @@
 import DataStruct
 from functions import *
 import datetime
-import pymysql as mysql
+
+# import pymysql as mysql
+
 
 
 tempDataTable = []
@@ -14,7 +16,7 @@ tempDataTable.append(DataStruct.DataStruct(datetime.datetime(2220, 2, 1, 1, 1, 1
 #     print(i.dateTime)
 #
 #
-#saveTabMySQLTemp('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database', tempDataTable)
+# saveTabMySQLTemp('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database', tempDataTable)
 
 print(tempDataTable[-1])
 

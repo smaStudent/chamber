@@ -73,45 +73,56 @@ def saveTabToFile(name, tab):
 
 def saveObjectToFile(name, obj):
     file = open(name, 'a')
-    obj.__str__()
+    file.write(obj.__str__())
     file.close()
 
 
 def saveTabMySQLTemp(hostGiven, userGiven, passwdGiven, dbGiven, tab):
-    connection = mysql.connect('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database')
-    for obj in tab:
-        print("Temp: " + obj.__str__())
-        print(obj.retAsTab())
-        # year, month, day, hour, minute, second, PV, SP, minLv, maxLv = obj.retAsTab()
-        # dateTime, PV, SP, minLv, maxLv = obj.retAsTab()
-        with connection.cursor() as cursor:
-            cursor.execute(
-                "INSERT INTO chamberTemp (dateTime, PV, SP, minLevel, maxLevel) VALUES (%s, %s, %s, %s, %s)",
-                (obj.retAsTab()))
-            connection.commit()
+    try:
+        connection = mysql.connect('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database')
+        for obj in tab:
+            print("Temp: " + obj.__str__())
+            print(obj.retAsTab())
+            # year, month, day, hour, minute, second, PV, SP, minLv, maxLv = obj.retAsTab()
+            # dateTime, PV, SP, minLv, maxLv = obj.retAsTab()
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    "INSERT INTO chamberTemp (dateTime, PV, SP, minLevel, maxLevel) VALUES (%s, %s, %s, %s, %s)",
+                    (obj.retAsTab()))
+                connection.commit()
 
-    
-    connection.close()
+        connection.close()
+
+
+    except (mysql.MySQLError, mysql.DataError, mysql.DatabaseError) as e:
+        print("Błąd: ", e)
+        print("Nie udało się wysłać danuch do MySQL, wpisuję je do pliku...")
+        saveTabToFile("tempDataFile.txt", tab)
+        print("Dane wpisane do pliku")
+        raise
+
+
 
 
 def saveTabMySQLHumi(hostGiven, userGiven, passwdGiven, dbGiven, tab):
-    connection = mysql.connect('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database')
-    for obj in tab:
-        print("Humi: " + obj.__str__())
-        # year, month, day, hour, minute, second, PV, SP, minLv, maxLv = obj.retAsTab()
-        # dateTime, PV, SP, minLv, maxLv = obj.retAsTab()
-        with connection.cursor() as cursor:
-            cursor.execute(
-                "INSERT INTO chamberHumi (dateTime, PV, SP, minLevel, maxLevel) VALUES (%s, %s, %s, %s, %s)",
-                (obj.retAsTab()))
-            connection.commit()
+    try:
+        connection = mysql.connect('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database')
+        for obj in tab:
+            print("Humi: " + obj.__str__())
+            # year, month, day, hour, minute, second, PV, SP, minLv, maxLv = obj.retAsTab()
+            # dateTime, PV, SP, minLv, maxLv = obj.retAsTab()
+            with connection.cursor() as cursor:
+                cursor.execute(
+                    "INSERT INTO chamberHumi (dateTime, PV, SP, minLevel, maxLevel) VALUES (%s, %s, %s, %s, %s)",
+                    (obj.retAsTab()))
+                connection.commit()
 
-    connection.close()
+        connection.close()
+    except (mysql.MySQLError, mysql.DataError, mysql.DatabaseError) as e:
+        print("Błąd: ", e)
+        print("Nie udało się wysłać danuch do MySQL, wpisuję je do pliku...")
+        saveTabToFile("humiDataFile.txt", tab)
+        print("Dane wpisane do pliku")
+        raise
 
     # datetime.datetime(year, month, day, hour, minute, second), PV, SP, minLv, maxLv)
-
-
-
-
-
-

@@ -65,8 +65,8 @@ class Chamber:
             print(self.getHumi().__str__())
 
         elif self.doWeNeedPushData():
-            saveTabToFile("tempDataFile.txt", self.tempDataTable)
-            saveTabToFile("humiDataFile.txt", self.humiDataTable)
+            # saveTabToFile("tempDataFile.txt", self.tempDataTable)
+            # saveTabToFile("humiDataFile.txt", self.humiDataTable)
 
             saveTabMySQLTemp('', '', '', 'test_database', self.tempDataTable)
             saveTabMySQLHumi('', '', '', 'test_database', self.humiDataTable)
@@ -82,8 +82,9 @@ class Chamber:
 
     def updateTemp(self, currentTime):
         # print("Robimy teraz w ChamberClass, tempData")
-        PV, SP, lowLv, maxLv = changeAnsForTable(sendAndReceive(self.ser, self.tempAsk))
-        self.tempDataTable.append(DataStruct.DataStruct(currentTime, PV, SP, lowLv, maxLv))
+        if 1 :
+            PV, SP, lowLv, maxLv = changeAnsForTable(sendAndReceive(self.ser, self.tempAsk))
+            self.tempDataTable.append(DataStruct.DataStruct(currentTime, PV, SP, lowLv, maxLv))
 
     def getTemp(self, whichOne=None):
         # print("Robimy teraz w ChamberClass, getData")
@@ -94,8 +95,9 @@ class Chamber:
 
     def updateHumi(self, currentTime):
         # print("Robimy teraz w ChamberClass, humiData")
-        PV, SP, lowLv, maxLv = changeAnsForTable(sendAndReceive(self.ser, self.humiAsk))
-        self.humiDataTable.append(DataStruct.DataStruct(currentTime, PV, SP, lowLv, maxLv))
+        if 1 :
+            PV, SP, lowLv, maxLv = changeAnsForTable(sendAndReceive(self.ser, self.humiAsk))
+            self.humiDataTable.append(DataStruct.DataStruct(currentTime, PV, SP, lowLv, maxLv))
 
     def getHumi(self, whichOne=None):
         # print("Robimy teraz w ChamberClass, getHumi")
@@ -110,13 +112,15 @@ class Chamber:
         else:
             return False
 
-    def checkCurrentProg(self):
+    # NOW IT'S NOT NECESSARY
+
+    def checkAllParameters(self):
         # PRGM                    Controls the current program.
 
-        print("odp na ROM? \t",           sendAndReceive(self.ser, 'ROM?\r\n'))
-        print("odp na SRQ?\t",              sendAndReceive(self.ser, 'RUN PRGM SRQ?\r\n'))
-        print("odp na MASK?\t",      sendAndReceive(self.ser, 'MASK?\r\n'))
-        print("odp na ALARM?\t",           sendAndReceive(self.ser, 'ALARM?\r\n'))
+        print("odp na ROM? \t", sendAndReceive(self.ser, 'ROM?\r\n'))
+        print("odp na SRQ?\t", sendAndReceive(self.ser, 'RUN PRGM SRQ?\r\n'))
+        print("odp na MASK?\t", sendAndReceive(self.ser, 'MASK?\r\n'))
+        print("odp na ALARM?\t", sendAndReceive(self.ser, 'ALARM?\r\n'))
 
         print("odp na KEYPROTECT? \t", sendAndReceive(self.ser, 'KEYPROTECT?\r\n'))
         print("odp na TYPE?\t", sendAndReceive(self.ser, 'TYPE?\r\n'))
@@ -130,3 +134,12 @@ class Chamber:
 
         print("odp na RUN PRGM MON?\t", sendAndReceive(self.ser, 'RUN PRGM MON?\r\n'))
         print("odp na RUN PRGM?\t", sendAndReceive(self.ser, 'RUN PRGM?\r\n'))
+
+    def checkAlarm(self):
+        alarm = sendAndReceive(self.ser, 'ALARM?\r\n')
+
+        if alarm != 0:
+            print(alarm)
+            return alarm
+        else:
+            return 0
