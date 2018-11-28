@@ -1,4 +1,8 @@
+import time
 from ChamberClass import Chamber
+
+time.time(15000)
+
 def main():
     
     chamber = Chamber()
