@@ -1,5 +1,5 @@
-import MySQLdb as mysql
-# import pymysql as mysql
+# import MySQLdb as mysql
+import pymysql as mysql
 import datetime
 
 
