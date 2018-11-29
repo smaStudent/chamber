@@ -8,12 +8,17 @@ import datetime
 def sendAndReceive(serialObject, message):
     try:
         serialObject.write(bytearray(message, 'utf-8'))
+        print("SendAdnReceive number 1")
         # time.sleep(0.2) we use flush() instead of time.sleep()
         serialObject.flush()
+        print("SendAdnReceive number 2")
         ans = serialObject.readline()
+        print("SendAdnReceive number 3")
         ans = ans.decode("utf-8")
+        print("SendAdnReceive number 4")
         return ans
     except:
+        print("SendAdnReceive Przypadek się jakiś pierniczy")
         raise
 
 

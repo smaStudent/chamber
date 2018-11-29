@@ -57,6 +57,9 @@ class Chamber:
         # tables for data
         self.tempDataTable = []
         self.humiDataTable = []
+        print("Udało się cały konstruktor")
+        print(self.ser.port)
+        print("\n")
 
     def __del__(self):
         self.ser.close()
