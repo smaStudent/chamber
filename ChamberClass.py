@@ -58,18 +58,22 @@ class Chamber:
         timeInUpdate = datetime.datetime.now()
 
         if timeInUpdate.second % self.periodOfRead == 0:
-            self.updateTemp(timeInUpdate)
-            self.updateHumi(timeInUpdate)
+            try:
+                self.updateTemp(timeInUpdate)
+                self.updateHumi(timeInUpdate)
+            except:
+                saveProblem(timeInUpdate, comment="Nie udało się w funkcji update self.updateTemp/Humi")
 
-            print(self.getTemp().__str__())
-            print(self.getHumi().__str__())
+            # print(self.getTemp().__str__())
+            # print(self.getHumi().__str__())
 
         elif self.doWeNeedPushData():
             # saveTabToFile("tempDataFile.txt", self.tempDataTable)
             # saveTabToFile("humiDataFile.txt", self.humiDataTable)
-
-            saveTabMySQLTemp('', '', '', 'test_database', self.tempDataTable)
-            saveTabMySQLHumi('', '', '', 'test_database', self.humiDataTable)
+            saveTabMySQLTemp('', '', '', 'test_database',
+                             self.tempDataTable)  # this is already protected in the functon implementation and just in case saved in the file
+            saveTabMySQLHumi('', '', '', 'test_database',
+                             self.humiDataTable)  # this is already protected in the functon implementation and just in case saved in the file
 
             self.tempDataTable = []
             self.humiDataTable = []
@@ -82,9 +86,11 @@ class Chamber:
 
     def updateTemp(self, currentTime):
         # print("Robimy teraz w ChamberClass, tempData")
-        if 1 :
+        try:
             PV, SP, lowLv, maxLv = changeAnsForTable(sendAndReceive(self.ser, self.tempAsk))
             self.tempDataTable.append(DataStruct.DataStruct(currentTime, PV, SP, lowLv, maxLv))
+        except:
+            raise
 
     def getTemp(self, whichOne=None):
         # print("Robimy teraz w ChamberClass, getData")
@@ -95,9 +101,11 @@ class Chamber:
 
     def updateHumi(self, currentTime):
         # print("Robimy teraz w ChamberClass, humiData")
-        if 1 :
+        try:
             PV, SP, lowLv, maxLv = changeAnsForTable(sendAndReceive(self.ser, self.humiAsk))
             self.humiDataTable.append(DataStruct.DataStruct(currentTime, PV, SP, lowLv, maxLv))
+        except:
+            raise
 
     def getHumi(self, whichOne=None):
         # print("Robimy teraz w ChamberClass, getHumi")
@@ -112,7 +120,18 @@ class Chamber:
         else:
             return False
 
-    # NOW IT'S NOT NECESSARY
+    def checkAlarm(self):
+        alarm = sendAndReceive(self.ser, 'ALARM?\r\n')
+
+        if alarm != 0:
+            print(alarm)
+            return alarm
+        else:
+            return 0
+
+    ###########################
+    ######## old code #########
+    ###########################
 
     def checkAllParameters(self):
         # PRGM                    Controls the current program.
@@ -134,12 +153,3 @@ class Chamber:
 
         print("odp na RUN PRGM MON?\t", sendAndReceive(self.ser, 'RUN PRGM MON?\r\n'))
         print("odp na RUN PRGM?\t", sendAndReceive(self.ser, 'RUN PRGM?\r\n'))
-
-    def checkAlarm(self):
-        alarm = sendAndReceive(self.ser, 'ALARM?\r\n')
-
-        if alarm != 0:
-            print(alarm)
-            return alarm
-        else:
-            return 0

@@ -1,0 +1,14 @@
+2018-11-29 12:26:19.724495:	<class 'ValueError'>
+2018-11-29 12:26:19.726505:	<class 'ZeroDivisionError'>
+2018-11-29 12:26:57.396614:	<class 'ValueError'>
+2018-11-29 12:26:57.397617:	<class 'ZeroDivisionError'>
+2018-11-29 12:27:43.224689:	invalid literal for int() with base 10: 'a'
+2018-11-29 12:27:43.225692:	division by zero
+2018-11-29 12:28:02.623492:	invalid literal for int() with base 10: 'a'	Troche lipa, pojawi³ siê problem w testing.py
+2018-11-29 12:28:02.623492:	division by zero	Troche lipa, pojawi³ siê problem w testing.py
+2018-11-29 13:02:39.194188:	invalid literal for int() with base 10: 'a'	Troche lipa, pojawi³ siê problem w testing.py
+2018-11-29 13:02:39.197171:	division by zero	Troche lipa, pojawi³ siê problem w testing.py
+2018-11-29 13:09:08.337465:	invalid literal for int() with base 10: 'a'	Troche lipa, pojawi³ siê problem w testing.py
+2018-11-29 13:09:08.337465:	division by zero	Troche lipa, pojawi³ siê problem w testing.py
+2018-11-29 13:09:11.916273:	invalid literal for int() with base 10: 'a'	Troche lipa, pojawi³ siê problem w testing.py
+2018-11-29 13:09:11.916273:	division by zero	Troche lipa, pojawi³ siê problem w testing.py
