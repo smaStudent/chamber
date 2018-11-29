@@ -3,8 +3,7 @@ from ChamberClass import Chamber
 
 import time
 
-time.time(15000)
-
+time.sleep(15)
 
 def main():
     chamber = Chamber()

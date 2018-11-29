@@ -23,20 +23,28 @@ import time
 
 # import module sys to get the type of exception
 import sys
+import time
 
 randomList = ['a', 0, 2]
 
-for entry in randomList:
-    try:
 
-        print("The entry is", entry)
+for i in range(10):
+    print("iteracja numer: ", i)
+    time.sleep(1)
 
-        r = 1 / int(entry)
 
-        print("The reciprocal of", entry, "is", r)
-        break
-    except:
-        print("Oops!", sys.exc_info()[0], "occured.")
-        print("Next entry.")
-        print()
-
+#
+# for entry in randomList:
+#     try:
+#
+#         print("The entry is", entry)
+#
+#         r = 1 / int(entry)
+#
+#         print("The reciprocal of", entry, "is", r)
+#         break
+#     except:
+#         print("Oops!", sys.exc_info()[0], "occured.")
+#         print("Next entry.")
+#         print()
+#
