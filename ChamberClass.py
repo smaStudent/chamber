@@ -8,10 +8,21 @@ import time
 
 class Chamber:
     def __init__(self, port='/dev/ttyUSB0', baudrate=9600, periodOfRead=20, sizeOfTheTable=100):
+        # just in case if someone will plug our adapter into bad port (designed for raspberry pi with 3 ports
+        portTab = ['/dev/ttyUSB1', '/dev/ttyUSB2', '/dev/ttyUSB3']
+
         # print("Let's start")
         # setting up serial connection
         self.ser = serial.Serial()
-        self.ser.port = port
+        try:
+            self.ser.port = port
+        except:
+            for i in portTab:
+                try:
+                    self.ser.port = i
+                    break
+                except:
+                    continue
         self.ser.baudrate = baudrate
         self.ser.polarity = None
         self.ser.bytesize = serial.EIGHTBITS
@@ -34,9 +45,10 @@ class Chamber:
 
         try:
             self.ser.open()  # openning the port
-        except serial.SerialException:
-            print(serial.SerialException, "unable to open the port")
+        except serial.SerialException as e:
+            print(e, "unable to open the port")
             counter = 1
+            saveProblem(datetime.datetime.now(), comment="Problem in __init__() while create chamber instance")
             while self.ser.isOpen() and counter < 100:
                 self.ser.open()
                 time.sleep(5)
