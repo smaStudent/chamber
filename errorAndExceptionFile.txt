@@ -1,2 +1,0 @@
-2018-11-29 14:25:29.472694:	invalid literal for int() with base 10: 'a'	Troche lipa, pojawi³ siê problem w testing.py
-2018-11-29 14:25:29.472694:	division by zero	Troche lipa, pojawi³ siê problem w testing.py

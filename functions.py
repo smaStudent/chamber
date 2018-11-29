@@ -143,17 +143,19 @@ def saveProblem(timeD, problem=None, comment=None):
 
     file.write(timeD.__str__() + ":\t")
 
-    if problem == None:
+    if problem is None:
         file.write(str(sys.exc_info()[0]))
     else:
         file.write(problem.__str__())
-    if comment != None:
+    if comment is not None:
         file.write("\t" + comment)
     file.write("\n")
 
+
+# import urllib2
 # def internet_on():
-# #     try:
-# #         urllib2.urlopen('http://216.58.192.142', timeout=1)
-# #         return True
-# #     except urllib2.URLError as err:
-# #         return False
+#     try:
+#         urllib2.urlopen('http://216.58.192.142', timeout=1)
+#         return True
+#     except urllib2.URLError as err:
+#         return False
