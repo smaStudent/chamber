@@ -40,10 +40,10 @@ class DataStruct:
         self.maxLv = None
 
 
-    def readFromFile(self, fileName):
-
-        with open(fileName) as f:
-            for line in f:
+    # def readFromFile(self, fileName):
+    #
+    #     with open(fileName) as f:
+    #         for line in f:
 
 
 
