@@ -1,7 +1,7 @@
-import DataStruct
-from functions import *
-import datetime
-import time
+# import DataStruct
+# from functions import *
+# import datetime
+# import time
 
 # # tempDataTable = []
 # # tempDataTable.append(DataStruct.DataStruct(datetime.datetime(2220, 1, 1, 1, 1, 1), 10, 32, 42, 12))
@@ -56,3 +56,12 @@ import time
 #     Funkcja()
 # except Exception as e:
 #     print(e)
+
+
+
+
+
+
+
+with open("errorAndExceptionFile.txt", 'a') as f:
+

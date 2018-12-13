@@ -1,23 +1,24 @@
-# import pymysql as mysql
-#
-#
-# # Connect to the database
-# connection = mysql.connect('mysql01.saxon.beep.pl',
-#                            'sub_saxon',
-#                            'passwd',
-#                            'test_database')
-#
-# try:
-#     with connection.cursor() as cursor:
-#         # Read a single record
-#         sql = "SELECT `id`, `password` FROM `users` WHERE `email`=%s"
-#         cursor.execute(sql, ('webmaster@python.org',))
-#         result = cursor.fetchone()
-#         print(result)
-# finally:
-#     connection.close()
-#
-#
-#
-#
-#
+import numpy as np
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+
+# X = np.linspace(1, 10)
+# YT = np.linspace(10, 20)
+# YH = np.linspace(90, 100)
+
+
+def plotSomeData(argX, argYTemp, argYHumi):
+    fig = plt.figure()
+
+    plt.plot(argX, argYTemp, 'r--', label='Temperature')
+    plt.plot(argX, argYHumi, 'b--', label='Humidity')
+    plt.style.use('ggplot')
+    plt.grid()
+    # plt.legend("Temperature", "Humidity")
+    # plt.axes()
+    plt.legend(loc="upper left")
+    plt.xlabel("Date")
+    plt.show()
+
+
+# plotSomeData(X, YT, YH)

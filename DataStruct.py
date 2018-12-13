@@ -38,3 +38,13 @@ class DataStruct:
         self.SP = None
         self.minLv = None
         self.maxLv = None
+
+
+    def readFromFile(self, fileName):
+
+        with open(fileName) as f:
+            for line in f:
+
+
+
+
