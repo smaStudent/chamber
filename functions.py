@@ -42,7 +42,7 @@ def saveTabMySQLTemp(hostGiven, userGiven, passwdGiven, dbGiven, tab):
         print("Nie udało się wysłać danuch do MySQL, wpisuję je do pliku...")
         saveTabToFile("tempDataFile.txt", tab)
         print("Dane wpisane do pliku")
-        saveProblem(datetime.datetime.now(), comment="Problem pojawił się w funkcji saveTaboMySQLTemp")
+        saveProblem(datetime.datetime.now(), comment="Problem pojawił się w funkcji saveTabToMySQLTemp")
         raise
 
 
@@ -65,7 +65,7 @@ def saveTabMySQLHumi(hostGiven, userGiven, passwdGiven, dbGiven, tab):
         print("Nie udało się wysłać danuch do MySQL, wpisuję je do pliku...")
         saveTabToFile("humiDataFile.txt", tab)
         print("Dane wpisane do pliku")
-        saveProblem(datetime.datetime.now(), comment="Problem pojawił się w funkcji saveTaboMySQLHumi")
+        saveProblem(datetime.datetime.now(), comment="Problem pojawił się w funkcji saveTabToMySQLHumi")
         raise
 
     # datetime.datetime(year, month, day, hour, minute, second), PV, SP, minLv, maxLv)

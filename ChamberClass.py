@@ -99,6 +99,13 @@ class Chamber:
     ######### helpful function #########
     ####################################
 
+    def instantPushData(self):
+        saveTabMySQLTemp('', '', '', 'test_database',
+                         self.tempDataTable)
+        saveTabMySQLHumi('', '', '', 'test_database',
+                         self.humiDataTable)
+
+
     def updateTemp(self, currentTime):
         # print("Robimy teraz w ChamberClass, tempData")
         try:
