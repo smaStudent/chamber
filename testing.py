@@ -57,11 +57,3 @@
 # except Exception as e:
 #     print(e)
 
-
-
-
-
-
-
-with open("errorAndExceptionFile.txt", 'a') as f:
-

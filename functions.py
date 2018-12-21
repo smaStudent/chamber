@@ -19,6 +19,7 @@ def sendAndReceive(serialObject, message):
         return ans
     except:
         #print("SendAdnReceive Przypadek się jakiś pierniczy")
+        saveProblem(datetime.datetime.now(), "There was a probem with sendAndReceive function.")
         raise
 
 
@@ -26,8 +27,8 @@ def saveTabMySQLTemp(hostGiven, userGiven, passwdGiven, dbGiven, tab):
     try:
         connection = mysql.connect('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database')
         for obj in tab:
-            print("Temp: " + obj.__str__())
-            print(obj.retAsTab())
+            # print("Temp: " + obj.__str__())
+            # print(obj.retAsTab())
             # year, month, day, hour, minute, second, PV, SP, minLv, maxLv = obj.retAsTab()
             # dateTime, PV, SP, minLv, maxLv = obj.retAsTab()
             with connection.cursor() as cursor:
@@ -38,10 +39,11 @@ def saveTabMySQLTemp(hostGiven, userGiven, passwdGiven, dbGiven, tab):
         connection.close()
 
     except (mysql.MySQLError, mysql.DataError, mysql.DatabaseError) as e:
-        print("Błąd: ", e)
-        print("Nie udało się wysłać danuch do MySQL, wpisuję je do pliku...")
+        # print("Błąd: ", e)
+        # print("Nie udało się wysłać danuch do MySQL, wpisuję je do pliku...")
         saveTabToFile("tempDataFile.txt", tab)
-        print("Dane wpisane do pliku")
+        saveLog("Temp data, should be in the tempDataFile.txt")
+        # print("Dane wpisane do pliku")
         saveProblem(datetime.datetime.now(), comment="Problem pojawił się w funkcji saveTabToMySQLTemp")
         raise
 
@@ -50,7 +52,7 @@ def saveTabMySQLHumi(hostGiven, userGiven, passwdGiven, dbGiven, tab):
     try:
         connection = mysql.connect('mysql01.saxon.beep.pl', 'sub_saxon', 'passwd', 'test_database')
         for obj in tab:
-            print("Humi: " + obj.__str__())
+            # print("Humi: " + obj.__str__())
             # year, month, day, hour, minute, second, PV, SP, minLv, maxLv = obj.retAsTab()
             # dateTime, PV, SP, minLv, maxLv = obj.retAsTab()
             with connection.cursor() as cursor:
@@ -61,10 +63,11 @@ def saveTabMySQLHumi(hostGiven, userGiven, passwdGiven, dbGiven, tab):
         connection.close()
 
     except (mysql.MySQLError, mysql.DataError, mysql.DatabaseError) as e:
-        print("Błąd: ", e)
-        print("Nie udało się wysłać danuch do MySQL, wpisuję je do pliku...")
+        # print("Błąd: ", e)
+        # print("Nie udało się wysłać danuch do MySQL, wpisuję je do pliku...")
         saveTabToFile("humiDataFile.txt", tab)
-        print("Dane wpisane do pliku")
+        # print("Dane wpisane do pliku")
+        saveLog("Humi data, should be in the humiDataFile.txt")
         saveProblem(datetime.datetime.now(), comment="Problem pojawił się w funkcji saveTabToMySQLHumi")
         raise
 
@@ -155,6 +158,12 @@ def saveProblem(timeD, problem=None, comment=None):
     if comment is not None:
         file.write("\t" + comment)
     file.write("\n")
+
+
+def saveLog(whatTosave):
+    logfile = open("logFile.txt", 'a')
+    logfile.write(datetime.datetime.now() + '\t' + whatTosave + "\n")
+    logfile.close()
 
 
 # import urllib2
