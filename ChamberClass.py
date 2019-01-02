@@ -1,3 +1,5 @@
+
+
 # from errors import ErrorDict        # to bedzie potrzebne do obslugi bledow
 from functions import *
 import serial
@@ -90,8 +92,8 @@ class Chamber:
             saveTabMySQLHumi('', '', '', 'test_database',
                              self.humiDataTable)  # this is already protected in the functon implementation and just in case saved in the file
 
-            self.tempDataTable = []
-            self.humiDataTable = []
+            self.tempDataTable.clear()
+            self.humiDataTable.clear()
 
         time.sleep(1)
 
